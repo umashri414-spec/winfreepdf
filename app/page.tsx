@@ -46,12 +46,17 @@ export default function Home() {
   };
 
   const handleConvert = () => {
-    if (!file) return setStatus("⚠️ முதல்ல file தேர்ந்தெடு!");
-    setStatus("⏳ Processing...");
-    setTimeout(() => {
-      setStatus("✅ முடிஞ்சது! File download ஆகுது...");
-    }, 2000);
-  };
+  if (!file) return setStatus("▲ முதல்ல file தேர்ந்தெடு!");
+  setStatus("⏳ Processing...");
+  
+  const url = URL.createObjectURL(file);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = file.name;
+  a.click();
+  
+  setStatus("✅ முடிஞ்சது! File download ஆகுது...");
+};
 
   if (activeTool && selectedTool) {
     return (
