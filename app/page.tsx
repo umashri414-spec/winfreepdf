@@ -3,14 +3,9 @@
 import { useState, useRef } from "react";
 
 const tools = [
-  { id: "pdf-to-word", icon: "📄", title: "PDF to Word", inputFormat: "pdf", outputFormat: "docx", desc: "PDF ஐ Word ஆக மாற்று", color: "#e8f4fd", accent: "#2196F3" },
-  { id: "pdf-to-excel", icon: "📊", title: "PDF to Excel", inputFormat: "pdf", outputFormat: "xlsx", desc: "PDF ஐ Excel ஆக மாற்று", color: "#e8fdf0", accent: "#4CAF50" },
-  { id: "pdf-to-jpg", icon: "🖼️", title: "PDF to JPG", inputFormat: "pdf", outputFormat: "jpg", desc: "PDF ஐ Image ஆக மாற்று", color: "#fde8e8", accent: "#F44336" },
-  { id: "jpg-to-pdf", icon: "📷", title: "JPG to PDF", inputFormat: "jpg", outputFormat: "pdf", desc: "Image ஐ PDF ஆக மாற்று", color: "#e8fdf8", accent: "#009688" },
-  { id: "word-to-pdf", icon: "📝", title: "Word to PDF", inputFormat: "docx", outputFormat: "pdf", desc: "Word ஐ PDF ஆக மாற்று", color: "#f3e8fd", accent: "#9C27B0" },
-  { id: "pdf-to-ppt", icon: "📽️", title: "PDF to PPT", inputFormat: "pdf", outputFormat: "pptx", desc: "PDF ஐ PowerPoint ஆக மாற்று", color: "#fdf0e8", accent: "#FF6D00" },
-  { id: "merge-pdf", icon: "🔗", title: "Merge PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "பல PDF ஒன்னா சேர்", color: "#fdf8e8", accent: "#FFC107" },
-  { id: "compress-pdf", icon: "🗜️", title: "Compress PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "PDF size குறை", color: "#e8f0fd", accent: "#3F51B5" },
+  { id: "jpg-to-pdf", icon: "📷", title: "JPG to PDF", desc: "Image ஐ PDF ஆக மாற்று", color: "#e8fdf8", accent: "#009688" },
+  { id: "png-to-pdf", icon: "🖼️", title: "PNG to PDF", desc: "PNG ஐ PDF ஆக மாற்று", color: "#fde8f4", accent: "#E91E63" },
+  { id: "merge-pdf", icon: "🔗", title: "Merge PDF", desc: "பல PDF ஒன்னா சேர்", color: "#fdf8e8", accent: "#FFC107" },
 ];
 
 export default function Home() {
@@ -33,25 +28,29 @@ export default function Home() {
     if (!file || !selectedTool) return setStatus("⚠️ முதல்ல file தேர்ந்தெடு!");
     setConverting(true);
     setStatus("⏳ Converting...");
+
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("inputFormat", selectedTool.inputFormat);
-      formData.append("outputFormat", selectedTool.outputFormat);
+      const { PDFDocument } = await import("pdf-lib");
 
-      const res = await fetch("https://api.convertapi.com/convert/" + selectedTool.inputFormat + "/to/" + selectedTool.outputFormat + "?Secret=secret_free", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) throw new Error("Failed");
-      const data = await res.json();
-      const fileUrl = data.Files[0].Url;
-      const a = document.createElement("a");
-      a.href = fileUrl;
-      a.download = data.Files[0].FileName;
-      a.click();
-      setStatus("✅ முடிஞ்சது! File download ஆகுது!");
+      if (activeTool === "jpg-to-pdf" || activeTool === "png-to-pdf") {
+        const imageBytes = await file.arrayBuffer();
+        const pdfDoc = await PDFDocument.create();
+        const image = activeTool === "jpg-to-pdf"
+          ? await pdfDoc.embedJpg(imageBytes)
+          : await pdfDoc.embedPng(imageBytes);
+        const page = pdfDoc.addPage([image.width, image.height]);
+        page.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = file.name.replace(/\.[^/.]+$/, "") + ".pdf";
+        a.click();
+        setStatus("✅ முடிஞ்சது! PDF download ஆகுது!");
+      } else {
+        setStatus("⚠️ இந்த tool வரும்!");
+      }
     } catch {
       setStatus("❌ Error! மீண்டும் try பண்ணு.");
     }
@@ -74,8 +73,7 @@ export default function Home() {
             style={{ border: `3px dashed ${dragging ? selectedTool.accent : "#ccc"}`, borderRadius: "20px", padding: "60px 32px", textAlign: "center", cursor: "pointer", background: dragging ? selectedTool.color : "#fff", transition: "all 0.3s" }}>
             <div style={{ fontSize: "64px", marginBottom: "16px" }}>{selectedTool.icon}</div>
             <h2 style={{ fontSize: "20px", color: "#333", margin: "0 0 8px" }}>File drag பண்ணு அல்லது click பண்ணு</h2>
-            <p style={{ color: "#888", margin: 0 }}>.{selectedTool.inputFormat} file select பண்ணு</p>
-            <input ref={fileRef} type="file" accept={`.${selectedTool.inputFormat}`} style={{ display: "none" }} onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
+            <input ref={fileRef} type="file" style={{ display: "none" }} onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
           </div>
           {file && (
             <div style={{ marginTop: "24px", background: "#fff", borderRadius: "12px", padding: "20px", border: "1px solid #eee" }}>
@@ -106,7 +104,7 @@ export default function Home() {
       </header>
       <div style={{ background: "linear-gradient(135deg, #e53935, #ff7043)", padding: "48px 32px", textAlign: "center", color: "#fff" }}>
         <h2 style={{ fontSize: "32px", fontWeight: "900", margin: "0 0 12px" }}>உன் PDF ஐ எதுவாக வேணும்னாலும் மாற்று!</h2>
-        <p style={{ fontSize: "18px", margin: 0, opacity: 0.9 }}>8 tools • Free • Fast • Secure</p>
+        <p style={{ fontSize: "18px", margin: 0, opacity: 0.9 }}>Free • Fast • Secure</p>
       </div>
       <div style={{ maxWidth: "1200px", margin: "40px auto", padding: "0 16px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "16px" }}>
@@ -123,7 +121,7 @@ export default function Home() {
         </div>
       </div>
       <footer style={{ textAlign: "center", padding: "32px", color: "#aaa", fontSize: "14px", borderTop: "1px solid #eee", marginTop: "40px" }}>
-        <p>❤️ WinFreePDF — 100% Free Forever | உங்கள் files secure ஆ இருக்கும்</p>
+        <p>❤️ WinFreePDF — 100% Free Forever</p>
       </footer>
     </div>
   );
