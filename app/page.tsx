@@ -55,7 +55,7 @@ export default function Home() {
 
       const a = document.createElement("a");
       a.href = data.url;
-      a.download = data.filename;
+      a.download = `converted.${selectedTool.outputFormat}`;
       a.click();
 
       setStatus("✅ முடிஞ்சது! Download ஆகுது...");
