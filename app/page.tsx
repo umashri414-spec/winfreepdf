@@ -72,7 +72,7 @@ export default function Home() {
         body: JSON.stringify({
           tasks: {
             "import-file": { operation: "import/uploaded", upload_task_id: uploadTaskData.data.id },
-            "convert-file": { operation: "convert", input: "import-file", input_format: selectedTool.inputFormat, output_format: selectedTool.outputFormat },
+            "convert-file": { operation: "convert", input: "import-file", input_format: selectedTool.inputFormat || "pdf", output_format: selectedTool.outputFormat },
             "export-file": { operation: "export/url", input: "convert-file" },
           },
         }),
