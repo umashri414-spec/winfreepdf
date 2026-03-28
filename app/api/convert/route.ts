@@ -1,10 +1,10 @@
+
 import { NextResponse } from 'next/server'
 import CloudConvert from 'cloudconvert'
 
 export async function POST(req: Request) {
   try {
     const formData = await req.formData()
-
     const file = formData.get('file') as File | null
     const outputFormat = formData.get("outputFormat") as string
 
@@ -35,9 +35,8 @@ export async function POST(req: Request) {
     })
 
     const uploadTask = job.tasks.find((t: any) => t.name === 'import-file')
-    if (!uploadTask) {
-      return NextResponse.json({error: 'Upload task not found'},{ status: 500})
-    }
+    if (!uploadTask) throw new Error('Upload task not found')
+      
     await cloudConvert.tasks.upload(uploadTask, file)
 
     const completedJob = await cloudConvert.jobs.wait(job.id)
@@ -49,8 +48,17 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'File not ready' }, { status: 500 })
     }
 
-    return NextResponse.json({
-      url: fileResult.url + "?download=1"
+    // ✅ Stream the file directly
+    const fileResponse = await fetch(fileResult.url)
+    const fileBuffer = await fileResponse.arrayBuffer()
+    const fileName = fileResult.filename || `converted.${outputFormat}`
+
+    return new NextResponse(fileBuffer, {
+      status: 200,
+      headers: {
+        'Content-Type': fileResponse.headers.get('Content-Type') || 'application/octet-stream',
+        'Content-Disposition': `attachment; filename="${fileName}"`,
+      }
     })
 
   } catch (error) {
