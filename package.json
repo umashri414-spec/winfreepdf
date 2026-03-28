@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",
+    "cloudconvert": "^3.0.0",
     "file-saver": "^2.0.5",
     "mammoth": "^1.12.0",
     "next": "16.2.1",

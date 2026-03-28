@@ -35,34 +35,36 @@ export default function Home() {
     setDragging(false);
     if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
   };
-
   const handleConvert = async () => {
-    if (!file || !selectedTool) return setStatus("⚠️ முதல்ல file தேர்ந்தெடு!");
-    setStatus("⏳ Converting...");
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("inputFormat", selectedTool.inputFormat);
-      formData.append("outputFormat", selectedTool.outputFormat);
+  if (!file || !selectedTool) {
+    setStatus("⚠️ முதல்ல file தேர்ந்தெடு!");
+    return;
+  }
 
-      const res = await fetch("/api/convert", {
-        method: "POST",
-        body: formData,
-      });
+  setStatus("⏳ Converting...");
 
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("outputFormat", selectedTool.outputFormat);
 
-      const a = document.createElement("a");
-      a.href = data.url;
-      a.download = `converted.${selectedTool.outputFormat}`;
-      a.click();
+    const res = await fetch("/api/convert", {
+      method: "POST",
+      body: formData,
+    });
 
-      setStatus("✅ முடிஞ்சது! Download ஆகுது...");
-    } catch {
-      setStatus("❌ Error! மீண்டும் try பண்ணு.");
-    }
-  };
+    const data = await res.json();
+
+    if (!data.url) throw new Error("No URL");
+
+    window.open(data.url, "_blank");
+
+    setStatus("✅ முடிஞ்சது! Download ஆகுது...");
+  } catch (err) {
+    setStatus("❌ Error! மீண்டும் try பண்ணு.");
+  }
+};
+
 
   if (activeTool && selectedTool) {
     return (
