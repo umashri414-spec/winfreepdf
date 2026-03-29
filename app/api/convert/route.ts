@@ -1,68 +1,53 @@
 
-import { NextResponse } from 'next/server'
-import CloudConvert from 'cloudconvert'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData()
-    const file = formData.get('file') as File | null
-    const outputFormat = formData.get("outputFormat") as string
-
+    const file = formData.get('file') as File
+    
     if (!file) {
-      return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
+      return NextResponse.json({ error: 'No file provided' }, { status: 400 })
     }
 
-    const apiKey = process.env.CLOUDCONVERT_API_KEY
-    if (!apiKey) {
-      return NextResponse.json({ error: 'API key missing' }, { status: 500 })
-    }
+    const bytes = await file.arrayBuffer()
+    const buffer = Buffer.from(bytes)
+    const base64 = buffer.toString('base64')
 
-    const cloudConvert = new CloudConvert(apiKey)
-
-    const job = await cloudConvert.jobs.create({
-      tasks: {
-        'import-file': { operation: 'import/upload' },
-        'convert-file': {
-          operation: 'convert',
-          input: 'import-file',
-          output_format: outputFormat
-        },
-        'export-file': {
-          operation: 'export/url',
-          input: 'convert-file'
-        }
+    const response = await fetch(
+      `https://v2.convertapi.com/convert/pdf/to/docx?Secret=${process.env.CONVERTAPI_SECRET}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          Parameters: [
+            {
+              Name: 'File',
+              FileValue: {
+                Name: file.name,
+                Data: base64
+              }
+            }
+          ]
+        })
       }
-    })
+    )
 
-    const uploadTask = job.tasks.find((t: any) => t.name === 'import-file')
-    if (!uploadTask) throw new Error('Upload task not found')
-      
-    await cloudConvert.tasks.upload(uploadTask, file)
-
-    const completedJob = await cloudConvert.jobs.wait(job.id)
-
-    const exportTask = completedJob.tasks.find((t: any) => t.name === 'export-file')
-    const fileResult = exportTask?.result?.files?.[0]
-
-    if (!fileResult?.url) {
-      return NextResponse.json({ error: 'File not ready' }, { status: 500 })
+    const result = await response.json()
+    
+    if (!result.Files?.[0]?.FileData) {
+      return NextResponse.json({ error: 'Conversion failed' }, { status: 500 })
     }
 
-    // ✅ Stream the file directly
-    const fileResponse = await fetch(fileResult.url)
-    const fileBuffer = await fileResponse.arrayBuffer()
-    const fileName = fileResult.filename || `converted.${outputFormat}`
-
-    return new NextResponse(fileBuffer, {
-      status: 200,
+    const docxBuffer = Buffer.from(result.Files[0].FileData, 'base64')
+    
+    return new NextResponse(docxBuffer, {
       headers: {
-        'Content-Type': fileResponse.headers.get('Content-Type') || 'application/octet-stream',
-        'Content-Disposition': `attachment; filename="${fileName}"`,
+        'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'Content-Disposition': `attachment; filename="converted.docx"`
       }
     })
-
   } catch (error) {
-    console.error(error)
-    return NextResponse.json({ error: 'Server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Conversion failed' }, { status: 500 })
   }
 }

@@ -53,15 +53,23 @@ export default function Home() {
       body: formData,
     });
 
-    const data = await res.json();
+    
+    if (!res.ok) throw new Error("Conversion failed");
+    //blob download
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = file.name.replace(/\.[^/.]+$/, `.${selectedTool.outputFormat}`);
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
 
-    if (!data.url) throw new Error("No URL");
-
-    window.open(data.url, "_blank");
-
-    setStatus("✅ முடிஞ்சது! Download ஆகுது...");
+    setStatus("✅ Conversion successful! Check your downloads.");
   } catch (err) {
-    setStatus("❌ Error! மீண்டும் try பண்ணு.");
+    console.error(err);
+    setStatus("❌ Conversion failed. Try again!");
   }
 };
 
