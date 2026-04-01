@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google"; 
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "WinFreePDF - Free PDF Converter Online",
   description: "Free PDF to Word, PDF to JPG, PDF to Excel converter. Fast, secure, no registration needed. Convert PDF files online for free!",
   keywords: "pdf to word, pdf converter, free pdf, pdf to jpg, pdf to excel",
+  verification:{
+    google: "89jeiXxg3hrgOzyNteLBDOupQy6xUUKf2qy9yvUgvlE",
+  },
   openGraph: {
     title: "WinFreePDF - Free PDF Converter",
     description: "Convert PDF files free online. 15+ tools available!",
@@ -32,8 +35,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ta">
-      <head>
+      <head>  
+        <meta name="google-site-verification" content="89jeiXxg3hrgOzyNteLBDOupQy6xUUKf2qy9yvUgvlE" />
         <link rel="manifest" href="/manifest.json" />
+
         <meta name="theme-color" content="#e53935" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
