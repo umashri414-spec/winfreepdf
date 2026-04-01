@@ -25,7 +25,7 @@ const tools = [
   { id: "unlock-pdf", icon: "🔓", title: "Unlock PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Password நீக்கு", color: "#e8fdea", accent: "#8BC34A" },
 ];
 
-const FREE_LIMIT = 20;
+const FREE_LIMIT = 20 ;
 
 export default function Home() {
   const [activeTool, setActiveTool] = useState<string | null>(null);
