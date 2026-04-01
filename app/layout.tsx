@@ -14,8 +14,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WinFreePDF",
-  description: "Free PDF Converter",
+  title: "WinFreePDF - Free PDF Converter Online",
+  description: "Free PDF to Word, PDF to JPG, PDF to Excel converter. Fast, secure, no registration needed. Convert PDF files online for free!",
+  keywords: "pdf to word, pdf converter, free pdf, pdf to jpg, pdf to excel",
+  openGraph: {
+    title: "WinFreePDF - Free PDF Converter",
+    description: "Convert PDF files free online. 15+ tools available!",
+    url: "https://winfreepdf.vercel.app",
+    siteName: "WinFreePDF",
+  },
 };
 
 export default function RootLayout({
