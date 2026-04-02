@@ -25,7 +25,27 @@ const tools = [
   { id: "unlock-pdf", icon: "🔓", title: "Unlock PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Password நீக்கு", color: "#e8fdea", accent: "#8BC34A" },
 ];
 
-const FREE_LIMIT = 20 ;
+const FREE_LIMIT = 20;
+
+declare global {
+  interface Window { adsbygoogle: any[]; }
+}
+
+function AdBanner() {
+  useEffect(() => {
+    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+  }, []);
+  return (
+    <div style={{ margin: "16px 0", textAlign: "center" }}>
+      <p style={{ fontSize: "11px", color: "#aaa", margin: "0 0 4px" }}>Advertisement</p>
+      <ins className="adsbygoogle" style={{ display: "block" }}
+        data-ad-client="ca-pub-9157505466817734"
+        data-ad-slot="4259655308"
+        data-ad-format="auto"
+        data-full-width-responsive="true" />
+    </div>
+  );
+}
 
 export default function Home() {
   const [activeTool, setActiveTool] = useState<string | null>(null);
@@ -37,6 +57,7 @@ export default function Home() {
   const [showPremium, setShowPremium] = useState(false);
   const [showPage, setShowPage] = useState<"privacy" | "terms" | "about" | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showAd, setShowAd] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const selectedTool = tools.find((t) => t.id === activeTool);
 
@@ -53,11 +74,7 @@ export default function Home() {
 
   const fetchUsage = async (userId: string) => {
     const today = new Date().toISOString().split("T")[0];
-    const { data } = await supabase
-      .from("user_usage")
-      .select("*")
-      .eq("user_id", userId)
-      .single();
+    const { data } = await supabase.from("user_usage").select("*").eq("user_id", userId).single();
     if (data) {
       if (data.last_reset !== today) {
         await supabase.from("user_usage").update({ conversion_count: 0, last_reset: today }).eq("user_id", userId);
@@ -74,13 +91,10 @@ export default function Home() {
   const handleGoogleLogin = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: { 
-         redirectTo: `${window.location.origin}/auth/callback`,
-          queryParams: {
-           access_type: 'offline',
-           prompt: 'consent',
-  },
-},  
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+        queryParams: { access_type: "offline", prompt: "consent" },
+      },
     });
   };
 
@@ -99,22 +113,12 @@ export default function Home() {
   };
 
   const handleConvert = async () => {
-    if (!file || !selectedTool) {
-      setStatus("⚠️ முதல்ல file தேர்ந்தெடு!");
-      return;
-    }
-
-    if (!user) {
-      setStatus("⚠️ முதல்ல Google Login பண்ணுங்க!");
-      return;
-    }
-
-    if (usageCount >= FREE_LIMIT) {
-      setShowPremium(true);
-      return;
-    }
+    if (!file || !selectedTool) { setStatus("⚠️ முதல்ல file தேர்ந்தெடு!"); return; }
+    if (!user) { setStatus("⚠️ முதல்ல Google Login பண்ணுங்க!"); return; }
+    if (usageCount >= FREE_LIMIT) { setShowPremium(true); return; }
 
     setLoading(true);
+    setShowAd(false);
     setStatus("⏳ Converting... Please wait (may take up to 1 minute)");
 
     try {
@@ -135,12 +139,11 @@ export default function Home() {
       a.remove();
       URL.revokeObjectURL(url);
 
-      // Update usage count
       const newCount = usageCount + 1;
       setUsageCount(newCount);
       await supabase.from("user_usage").update({ conversion_count: newCount }).eq("user_id", user.id);
-
       setStatus(`✅ Conversion successful! (${newCount}/${FREE_LIMIT} today)`);
+      setShowAd(true);
     } catch (err) {
       setStatus("❌ Conversion failed. Try again!");
     } finally {
@@ -148,7 +151,6 @@ export default function Home() {
     }
   };
 
-  // Privacy Policy Page
   if (showPage === "privacy") {
     return (
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif", padding: "32px" }}>
@@ -159,15 +161,14 @@ export default function Home() {
         <p>உங்கள் upload பண்ணும் files convert ஆனதும் உடனே delete ஆகும். நாம் எந்த file-யும் store பண்றதில்லை.</p>
         <h2>2. Personal Information</h2>
         <p>Google Login மூலம் உங்கள் email மட்டும் collect பண்றோம் — conversion count track பண்ண மட்டும்.</p>
-        <h2>3. Third Party</h2>
-        <p>உங்கள் data எந்த third party-கிட்டயும் share பண்றதில்லை.</p>
+        <h2>3. Advertising</h2>
+        <p>நாம் Google AdSense use பண்றோம். Google cookies use பண்ணி personalized ads காட்டலாம்.</p>
         <h2>4. Contact</h2>
-        <p>Questions? Email: umashri414@gmail.com</p>
+        <p>Email: umashri414@gmail.com</p>
       </div>
     );
   }
 
-  // Terms Page
   if (showPage === "terms") {
     return (
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif", padding: "32px" }}>
@@ -175,32 +176,25 @@ export default function Home() {
         <h1 style={{ color: "#e53935" }}>Terms & Conditions</h1>
         <p><strong>Last updated:</strong> April 2026</p>
         <h2>1. Usage</h2>
-        <p>Free users: 5 conversions per day. Premium users: Unlimited.</p>
+        <p>Free users: 20 conversions per day.</p>
         <h2>2. File Safety</h2>
-        <p>Upload பண்ணும் files convert ஆனதும் உடனே delete ஆகும். Copyright files upload பண்ணக்கூடாது.</p>
-        <h2>3. Prohibited</h2>
-        <p>Illegal content, malware, virus files upload பண்ணக்கூடாது.</p>
-        <h2>4. Service</h2>
-        <p>WinFreePDF 100% free service. Premium features coming soon.</p>
+        <p>Upload பண்ணும் files convert ஆனதும் உடனே delete ஆகும்.</p>
+        <h2>3. Ads</h2>
+        <p>இந்த site Google AdSense ads காட்டும் — இது site maintain பண்ண உதவுது.</p>
       </div>
     );
   }
 
-  // About Page
   if (showPage === "about") {
     return (
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif", padding: "32px" }}>
         <button onClick={() => setShowPage(null)} style={{ background: "#e53935", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>← Back</button>
         <h1 style={{ color: "#e53935" }}>About WinFreePDF</h1>
         <p>WinFreePDF is a free, fast, and secure PDF converter tool.</p>
-        <h2>🎯 Our Mission</h2>
-        <p>Everyone should have access to free PDF tools — no hidden costs, no limits on basic features.</p>
-        <h2>🔒 Security</h2>
-        <p>உங்கள் files convert ஆனதும் உடனே delete ஆகும். 100% secure.</p>
         <h2>📧 Contact</h2>
         <p>Email: umashri414@gmail.com</p>
         <h2>🌟 Features</h2>
-        <p>15+ PDF tools • Free • Fast • No registration needed for basic use</p>
+        <p>15+ PDF tools • Free • Fast • Secure • 20 conversions/day free</p>
       </div>
     );
   }
@@ -210,7 +204,7 @@ export default function Home() {
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif" }}>
         <header style={{ background: "#fff", borderBottom: "2px solid #eee", padding: "16px 32px", display: "flex", alignItems: "center", gap: "16px", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <button onClick={() => { setActiveTool(null); setFile(null); setStatus(""); }} style={{ background: "none", border: "none", fontSize: "24px", cursor: "pointer" }}>←</button>
+            <button onClick={() => { setActiveTool(null); setFile(null); setStatus(""); setShowAd(false); }} style={{ background: "none", border: "none", fontSize: "24px", cursor: "pointer" }}>←</button>
             <span style={{ fontSize: "28px" }}>{selectedTool.icon}</span>
             <div>
               <h1 style={{ margin: 0, fontSize: "22px", fontWeight: "700", color: selectedTool.accent }}>{selectedTool.title}</h1>
@@ -228,10 +222,13 @@ export default function Home() {
         </header>
 
         <div style={{ maxWidth: "700px", margin: "48px auto", padding: "0 16px" }}>
+          <AdBanner />
+
           {!user && (
             <div style={{ background: "#fff3cd", border: "1px solid #ffc107", borderRadius: "12px", padding: "16px", marginBottom: "16px", textAlign: "center" }}>
-              ⚠️ Convert பண்ண <strong>Google Login</strong> பண்ணுங்க! Free-ஆ 5 conversions/day கிடைக்கும்!
-              <br /><button onClick={handleGoogleLogin} style={{ marginTop: "8px", background: "#4285F4", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 20px", cursor: "pointer" }}>🔐 Sign in with Google</button>
+              ⚠️ Convert பண்ண <strong>Google Login</strong> பண்ணுங்க! Free-ஆ 20 conversions/day கிடைக்கும்!
+              <br />
+              <button onClick={handleGoogleLogin} style={{ marginTop: "8px", background: "#4285F4", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 20px", cursor: "pointer" }}>🔐 Sign in with Google</button>
             </div>
           )}
 
@@ -261,16 +258,17 @@ export default function Home() {
               {status}
             </div>
           )}
+
+          {showAd && <AdBanner />}
         </div>
 
-        {/* Premium Modal */}
         {showPremium && (
           <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
             <div style={{ background: "#fff", borderRadius: "20px", padding: "40px", maxWidth: "400px", textAlign: "center" }}>
               <div style={{ fontSize: "48px" }}>🚀</div>
               <h2 style={{ color: "#e53935" }}>Daily Limit Reached!</h2>
-              <p>நீங்கள் இன்றைக்கு 5 free conversions use பண்ணிவிட்டீர்கள்!</p>
-              <p style={{ color: "#666", fontSize: "14px" }}>நாளைக்கு மீண்டும் 5 free conversions கிடைக்கும்!</p>
+              <p>நீங்கள் இன்றைக்கு 20 free conversions use பண்ணிவிட்டீர்கள்!</p>
+              <p style={{ color: "#666", fontSize: "14px" }}>நாளைக்கு மீண்டும் 20 free conversions கிடைக்கும்!</p>
               <div style={{ background: "#f5f5f5", borderRadius: "12px", padding: "20px", margin: "16px 0" }}>
                 <h3 style={{ margin: "0 0 8px", color: "#e53935" }}>Premium Coming Soon!</h3>
                 <p style={{ margin: 0, fontSize: "14px" }}>Unlimited conversions • $1/month</p>
@@ -312,8 +310,9 @@ export default function Home() {
         <p style={{ fontSize: "14px", margin: 0, opacity: 0.8 }}>🔒 உங்கள் files convert ஆனதும் உடனே delete ஆகும் • 100% Safe</p>
       </div>
 
-      <div style={{ maxWidth: "1200px", margin: "40px auto", padding: "0 16px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "16px" }}>
+      <div style={{ maxWidth: "1200px", margin: "20px auto", padding: "0 16px" }}>
+        <AdBanner />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "16px", marginTop: "20px" }}>
           {tools.map((tool) => (
             <div key={tool.id} onClick={() => setActiveTool(tool.id)}
               style={{ background: "#fff", borderRadius: "16px", padding: "24px 20px", cursor: "pointer", border: "2px solid transparent", boxShadow: "0 2px 8px rgba(0,0,0,0.07)", transition: "all 0.2s" }}
