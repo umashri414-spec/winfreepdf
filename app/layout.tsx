@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="ta">
       <head>  
         <meta name="google-site-verification" content="89jeiXxg3hrgOzyNteLBDOupQy6xUUKf2qy9yvUgvlE" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9157505466817734" crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9157505466817734" crossOrigin="anonymous"></script>ss
         <link rel="manifest" href="/manifest.json" />
 
         <meta name="theme-color" content="#e53935" />
