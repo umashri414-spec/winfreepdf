@@ -1,5 +1,4 @@
-page.tsx - WinFreePDF Complete Code
-Instructions: Copy this code and paste into GitHub app/page.tsx
+
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
