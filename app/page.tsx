@@ -1,3 +1,5 @@
+page.tsx - WinFreePDF Complete Code
+Instructions: Copy this code and paste into GitHub app/page.tsx
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
@@ -8,24 +10,25 @@ const supabase = createClient(
 );
 
 const tools = [
-  { id: "pdf-to-word", icon: "📄", title: "PDF to Word", inputFormat: "pdf", outputFormat: "docx", desc: "PDF ஐ Word ஆக மாற்று", color: "#e8f4fd", accent: "#2196F3" },
-  { id: "word-to-pdf", icon: "📝", title: "Word to PDF", inputFormat: "docx", outputFormat: "pdf", desc: "Word ஐ PDF ஆக மாற்று", color: "#f3e8fd", accent: "#9C27B0" },
-  { id: "pdf-to-excel", icon: "📊", title: "PDF to Excel", inputFormat: "pdf", outputFormat: "xlsx", desc: "PDF ஐ Excel ஆக மாற்று", color: "#e8fdf0", accent: "#4CAF50" },
-  { id: "excel-to-pdf", icon: "📈", title: "Excel to PDF", inputFormat: "xlsx", outputFormat: "pdf", desc: "Excel ஐ PDF ஆக மாற்று", color: "#fdf4e8", accent: "#FF9800" },
-  { id: "pdf-to-jpg", icon: "🖼️", title: "PDF to JPG", inputFormat: "pdf", outputFormat: "jpg", desc: "PDF ஐ Image ஆக மாற்று", color: "#fde8e8", accent: "#F44336" },
-  { id: "jpg-to-pdf", icon: "📷", title: "JPG to PDF", inputFormat: "jpg", outputFormat: "pdf", desc: "Image ஐ PDF ஆக மாற்று", color: "#e8fdf8", accent: "#009688" },
-  { id: "png-to-pdf", icon: "🖼️", title: "PNG to PDF", inputFormat: "png", outputFormat: "pdf", desc: "PNG ஐ PDF ஆக மாற்று", color: "#e8f0fd", accent: "#3F51B5" },
-  { id: "pdf-to-ppt", icon: "📽️", title: "PDF to PPT", inputFormat: "pdf", outputFormat: "pptx", desc: "PDF ஐ PowerPoint ஆக மாற்று", color: "#fdf0e8", accent: "#FF6D00" },
-  { id: "ppt-to-pdf", icon: "🎞️", title: "PPT to PDF", inputFormat: "pptx", outputFormat: "pdf", desc: "PowerPoint ஐ PDF ஆக மாற்று", color: "#e8fdfd", accent: "#00897B" },
-  { id: "merge-pdf", icon: "🔗", title: "Merge PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "பல PDF files ஒன்னா சேர்", color: "#fdf8e8", accent: "#FFC107" },
-  { id: "compress-pdf", icon: "🗜️", title: "Compress PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "PDF size குறை", color: "#e8f0fd", accent: "#3F51B5" },
-  { id: "split-pdf", icon: "✂️", title: "Split PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "PDF ஐ பிரி", color: "#f8e8fd", accent: "#E91E63" },
-  { id: "rotate-pdf", icon: "🔄", title: "Rotate PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "PDF pages திரும்பு", color: "#fde8f4", accent: "#FF4081" },
-  { id: "protect-pdf", icon: "🔒", title: "Protect PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Password போடு", color: "#fdeee8", accent: "#FF5722" },
-  { id: "unlock-pdf", icon: "🔓", title: "Unlock PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Password நீக்கு", color: "#e8fdea", accent: "#8BC34A" },
+  { id: "pdf-to-word", icon: "📄", title: "PDF to Word", inputFormat: "pdf", outputFormat: "docx", desc: "Convert PDF to editable Word documents instantly. No quality loss.", color: "#e8f4fd", accent: "#2196F3" },
+  { id: "word-to-pdf", icon: "📝", title: "Word to PDF", inputFormat: "docx", outputFormat: "pdf", desc: "Convert Word documents to PDF format easily and quickly.", color: "#f3e8fd", accent: "#9C27B0" },
+  { id: "pdf-to-excel", icon: "📊", title: "PDF to Excel", inputFormat: "pdf", outputFormat: "xlsx", desc: "Extract tables from PDF to Excel spreadsheets automatically.", color: "#e8fdf0", accent: "#4CAF50" },
+  { id: "excel-to-pdf", icon: "📈", title: "Excel to PDF", inputFormat: "xlsx", outputFormat: "pdf", desc: "Convert Excel spreadsheets to PDF format in seconds.", color: "#fdf4e8", accent: "#FF9800" },
+  { id: "pdf-to-jpg", icon: "🖼️", title: "PDF to JPG", inputFormat: "pdf", outputFormat: "jpg", desc: "Convert PDF pages to high quality JPG images for free.", color: "#fde8e8", accent: "#F44336" },
+  { id: "jpg-to-pdf", icon: "📷", title: "JPG to PDF", inputFormat: "jpg", outputFormat: "pdf", desc: "Convert JPG images to PDF documents instantly online.", color: "#e8fdf8", accent: "#009688" },
+  { id: "png-to-pdf", icon: "🖼️", title: "PNG to PDF", inputFormat: "png", outputFormat: "pdf", desc: "Convert PNG images to PDF format free and fast.", color: "#e8f0fd", accent: "#3F51B5" },
+  { id: "pdf-to-ppt", icon: "📽️", title: "PDF to PPT", inputFormat: "pdf", outputFormat: "pptx", desc: "Convert PDF files to PowerPoint presentations easily.", color: "#fdf0e8", accent: "#FF6D00" },
+  { id: "ppt-to-pdf", icon: "🎞️", title: "PPT to PDF", inputFormat: "pptx", outputFormat: "pdf", desc: "Convert PowerPoint presentations to PDF format online.", color: "#e8fdfd", accent: "#00897B" },
+  { id: "merge-pdf", icon: "🔗", title: "Merge PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Combine multiple PDF files into one document for free.", color: "#fdf8e8", accent: "#FFC107" },
+  { id: "compress-pdf", icon: "🗜️", title: "Compress PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Reduce PDF file size without losing quality online.", color: "#e8f0fd", accent: "#3F51B5" },
+  { id: "split-pdf", icon: "✂️", title: "Split PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Split PDF into multiple separate files instantly.", color: "#f8e8fd", accent: "#E91E63" },
+  { id: "rotate-pdf", icon: "🔄", title: "Rotate PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Rotate PDF pages to any angle quickly and easily.", color: "#fde8f4", accent: "#FF4081" },
+  { id: "protect-pdf", icon: "🔒", title: "Protect PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Add password protection to secure your PDF files.", color: "#fdeee8", accent: "#FF5722" },
+  { id: "unlock-pdf", icon: "🔓", title: "Unlock PDF", inputFormat: "pdf", outputFormat: "pdf", desc: "Remove password from protected PDF files online free.", color: "#e8fdea", accent: "#8BC34A" },
 ];
 
-const FREE_LIMIT = 20;
+const GUEST_LIMIT = 3;
+const FREE_LIMIT = 15;
 
 declare global {
   interface Window { adsbygoogle: any[]; }
@@ -47,6 +50,22 @@ function AdBanner() {
   );
 }
 
+function WinFreeLogo() {
+  return (
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#C39BD3"/>
+          <stop offset="100%" stopColor="#6C3483"/>
+        </linearGradient>
+      </defs>
+      <path d="M22 38C22 38 5 27 5 16C5 10.5 9.5 7 14 7C17.5 7 20.5 9 22 12C23.5 9 26.5 7 30 7C34.5 7 39 10.5 39 16C39 27 22 38 22 38Z" fill="url(#hg)"/>
+      <text x="22" y="21" fontFamily="Arial" fontWeight="bold" fontSize="7" fill="white" textAnchor="middle">Win</text>
+      <text x="22" y="29" fontFamily="Arial" fontWeight="bold" fontSize="6" fill="white" textAnchor="middle">FreePDF</text>
+    </svg>
+  );
+}
+
 export default function Home() {
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -54,7 +73,9 @@ export default function Home() {
   const [dragging, setDragging] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [usageCount, setUsageCount] = useState(0);
+  const [guestCount, setGuestCount] = useState(0);
   const [showPremium, setShowPremium] = useState(false);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showPage, setShowPage] = useState<"privacy" | "terms" | "about" | null>(null);
   const [loading, setLoading] = useState(false);
   const [showAd, setShowAd] = useState(false);
@@ -62,6 +83,8 @@ export default function Home() {
   const selectedTool = tools.find((t) => t.id === activeTool);
 
   useEffect(() => {
+    const savedGuest = parseInt(localStorage.getItem("guestCount") || "0");
+    setGuestCount(savedGuest);
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
       if (session?.user) fetchUsage(session.user.id);
@@ -113,13 +136,26 @@ export default function Home() {
   };
 
   const handleConvert = async () => {
-    if (!file || !selectedTool) { setStatus("⚠️ முதல்ல file தேர்ந்தெடு!"); return; }
-    if (!user) { setStatus("⚠️ முதல்ல Google Login பண்ணுங்க!"); return; }
-    if (usageCount >= FREE_LIMIT) { setShowPremium(true); return; }
+    if (!file || !selectedTool) { setStatus("File select pannu!"); return; }
+
+    if (!user) {
+      const newGuestCount = guestCount + 1;
+      if (newGuestCount > GUEST_LIMIT) {
+        setShowLoginPopup(true);
+        return;
+      }
+      setGuestCount(newGuestCount);
+      localStorage.setItem("guestCount", newGuestCount.toString());
+    }
+
+    if (user && usageCount >= FREE_LIMIT) {
+      setShowPremium(true);
+      return;
+    }
 
     setLoading(true);
     setShowAd(false);
-    setStatus("⏳ Converting... Please wait (may take up to 1 minute)");
+    setStatus("Converting... Please wait (may take up to 1 minute)");
 
     try {
       const formData = new FormData();
@@ -139,13 +175,17 @@ export default function Home() {
       a.remove();
       URL.revokeObjectURL(url);
 
-      const newCount = usageCount + 1;
-      setUsageCount(newCount);
-      await supabase.from("user_usage").update({ conversion_count: newCount }).eq("user_id", user.id);
-      setStatus(`✅ Conversion successful! (${newCount}/${FREE_LIMIT} today)`);
+      if (user) {
+        const newCount = usageCount + 1;
+        setUsageCount(newCount);
+        await supabase.from("user_usage").update({ conversion_count: newCount }).eq("user_id", user.id);
+        setStatus(`Conversion successful! (${newCount}/${FREE_LIMIT} today)`);
+      } else {
+        setStatus(`Conversion successful! (${guestCount}/${GUEST_LIMIT} free)`);
+      }
       setShowAd(true);
     } catch (err) {
-      setStatus("❌ Conversion failed. Try again!");
+      setStatus("Conversion failed. Try again!");
     } finally {
       setLoading(false);
     }
@@ -154,15 +194,15 @@ export default function Home() {
   if (showPage === "privacy") {
     return (
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif", padding: "32px" }}>
-        <button onClick={() => setShowPage(null)} style={{ background: "#e53935", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>← Back</button>
-        <h1 style={{ color: "#e53935" }}>Privacy Policy</h1>
+        <button onClick={() => setShowPage(null)} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>Back</button>
+        <h1 style={{ color: "#7B2FBE" }}>Privacy Policy</h1>
         <p><strong>Last updated:</strong> April 2026</p>
-        <h2>1. Files & Data</h2>
-        <p>உங்கள் upload பண்ணும் files convert ஆனதும் உடனே delete ஆகும். நாம் எந்த file-யும் store பண்றதில்லை.</p>
+        <h2>1. Files and Data</h2>
+        <p>Your uploaded files are deleted immediately after conversion. We never store any files.</p>
         <h2>2. Personal Information</h2>
-        <p>Google Login மூலம் உங்கள் email மட்டும் collect பண்றோம் — conversion count track பண்ண மட்டும்.</p>
+        <p>We collect only your email via Google Login to track conversion count.</p>
         <h2>3. Advertising</h2>
-        <p>நாம் Google AdSense use பண்றோம். Google cookies use பண்ணி personalized ads காட்டலாம்.</p>
+        <p>We use Google AdSense. Google may use cookies to show personalized ads.</p>
         <h2>4. Contact</h2>
         <p>Email: umashri414@gmail.com</p>
       </div>
@@ -172,15 +212,15 @@ export default function Home() {
   if (showPage === "terms") {
     return (
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif", padding: "32px" }}>
-        <button onClick={() => setShowPage(null)} style={{ background: "#e53935", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>← Back</button>
-        <h1 style={{ color: "#e53935" }}>Terms & Conditions</h1>
+        <button onClick={() => setShowPage(null)} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>Back</button>
+        <h1 style={{ color: "#7B2FBE" }}>Terms and Conditions</h1>
         <p><strong>Last updated:</strong> April 2026</p>
         <h2>1. Usage</h2>
-        <p>Free users: 20 conversions per day.</p>
+        <p>Free users: 15 conversions per day. Guest users: 3 conversions free.</p>
         <h2>2. File Safety</h2>
-        <p>Upload பண்ணும் files convert ஆனதும் உடனே delete ஆகும்.</p>
+        <p>Uploaded files are deleted immediately after conversion.</p>
         <h2>3. Ads</h2>
-        <p>இந்த site Google AdSense ads காட்டும் — இது site maintain பண்ண உதவுது.</p>
+        <p>This site shows Google AdSense ads to help maintain the service.</p>
       </div>
     );
   }
@@ -188,13 +228,13 @@ export default function Home() {
   if (showPage === "about") {
     return (
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif", padding: "32px" }}>
-        <button onClick={() => setShowPage(null)} style={{ background: "#e53935", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>← Back</button>
-        <h1 style={{ color: "#e53935" }}>About WinFreePDF</h1>
+        <button onClick={() => setShowPage(null)} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>Back</button>
+        <h1 style={{ color: "#7B2FBE" }}>About WinFreePDF</h1>
         <p>WinFreePDF is a free, fast, and secure PDF converter tool.</p>
-        <h2>📧 Contact</h2>
+        <h2>Contact</h2>
         <p>Email: umashri414@gmail.com</p>
-        <h2>🌟 Features</h2>
-        <p>15+ PDF tools • Free • Fast • Secure • 20 conversions/day free</p>
+        <h2>Features</h2>
+        <p>15+ PDF tools - Free - Fast - Secure - 15 conversions/day free</p>
       </div>
     );
   }
@@ -204,8 +244,8 @@ export default function Home() {
       <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif" }}>
         <header style={{ background: "#fff", borderBottom: "2px solid #eee", padding: "16px 32px", display: "flex", alignItems: "center", gap: "16px", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <button onClick={() => { setActiveTool(null); setFile(null); setStatus(""); setShowAd(false); }} style={{ background: "none", border: "none", fontSize: "24px", cursor: "pointer" }}>←</button>
-            <span style={{ fontSize: "28px" }}>{selectedTool.icon}</span>
+            <button onClick={() => { setActiveTool(null); setFile(null); setStatus(""); setShowAd(false); }} style={{ background: "none", border: "none", fontSize: "24px", cursor: "pointer" }}>Back</button>
+            <WinFreeLogo />
             <div>
               <h1 style={{ margin: 0, fontSize: "22px", fontWeight: "700", color: selectedTool.accent }}>{selectedTool.title}</h1>
               <p style={{ margin: 0, fontSize: "14px", color: "#666" }}>{selectedTool.desc}</p>
@@ -217,38 +257,29 @@ export default function Home() {
               <button onClick={handleLogout} style={{ background: "#eee", border: "none", borderRadius: "8px", padding: "8px 16px", cursor: "pointer" }}>Logout</button>
             </div>
           ) : (
-            <button onClick={handleGoogleLogin} style={{ background: "#4285F4", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 16px", cursor: "pointer", fontWeight: "600" }}>🔐 Google Login</button>
+            <button onClick={handleGoogleLogin} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 16px", cursor: "pointer", fontWeight: "600" }}>Google Login</button>
           )}
         </header>
 
         <div style={{ maxWidth: "700px", margin: "48px auto", padding: "0 16px" }}>
           <AdBanner />
-
-          {!user && (
-            <div style={{ background: "#fff3cd", border: "1px solid #ffc107", borderRadius: "12px", padding: "16px", marginBottom: "16px", textAlign: "center" }}>
-              ⚠️ Convert பண்ண <strong>Google Login</strong> பண்ணுங்க! Free-ஆ 20 conversions/day கிடைக்கும்!
-              <br />
-              <button onClick={handleGoogleLogin} style={{ marginTop: "8px", background: "#4285F4", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 20px", cursor: "pointer" }}>🔐 Sign in with Google</button>
-            </div>
-          )}
-
           <div onDrop={handleDrop}
             onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
             onDragLeave={() => setDragging(false)}
             onClick={() => fileRef.current?.click()}
             style={{ border: `3px dashed ${dragging ? selectedTool.accent : "#ccc"}`, borderRadius: "20px", padding: "60px 32px", textAlign: "center", cursor: "pointer", background: dragging ? selectedTool.color : "#fff" }}>
             <div style={{ fontSize: "64px", marginBottom: "16px" }}>{selectedTool.icon}</div>
-            <h2 style={{ fontSize: "20px", color: "#333", margin: "0 0 8px" }}>File drag பண்ணு அல்லது click பண்ணு</h2>
-            <p style={{ color: "#888", margin: 0 }}>.{selectedTool.inputFormat} file select பண்ணு</p>
+            <h2 style={{ fontSize: "20px", color: "#333", margin: "0 0 8px" }}>Drag file here or click to select</h2>
+            <p style={{ color: "#888", margin: 0 }}>Select .{selectedTool.inputFormat} file</p>
             <input ref={fileRef} type="file" style={{ display: "none" }} accept={`.${selectedTool.inputFormat}`} onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
           </div>
 
           {file && (
             <div style={{ marginTop: "24px", background: "#fff", borderRadius: "12px", padding: "20px", border: "1px solid #eee" }}>
-              <p style={{ margin: "0 0 16px", color: "#444" }}>📎 {file.name} ({(file.size / 1024).toFixed(1)} KB)</p>
+              <p style={{ margin: "0 0 16px", color: "#444" }}>{file.name} ({(file.size / 1024).toFixed(1)} KB)</p>
               <button onClick={handleConvert} disabled={loading}
                 style={{ background: loading ? "#ccc" : selectedTool.accent, color: "#fff", border: "none", borderRadius: "10px", padding: "14px 40px", fontSize: "18px", cursor: loading ? "not-allowed" : "pointer", width: "100%", fontWeight: "700" }}>
-                {loading ? "⏳ Converting... Please wait..." : `${selectedTool.title} மாற்று! 🚀`}
+                {loading ? "Converting... Please wait..." : `Convert Now`}
               </button>
             </div>
           )}
@@ -258,22 +289,40 @@ export default function Home() {
               {status}
             </div>
           )}
-
           {showAd && <AdBanner />}
         </div>
+
+        {showLoginPopup && (
+          <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
+            <div style={{ background: "#fff", borderRadius: "20px", padding: "40px", maxWidth: "400px", textAlign: "center" }}>
+              <div style={{ fontSize: "48px" }}>💜</div>
+              <h2 style={{ color: "#7B2FBE" }}>Free Limit Reached!</h2>
+              <p>You have used 3 free conversions!</p>
+              <p style={{ color: "#666", fontSize: "14px" }}>Login to get <strong>15 conversions/day</strong> free!</p>
+              <button onClick={() => { setShowLoginPopup(false); handleGoogleLogin(); }}
+                style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "10px", padding: "12px 32px", cursor: "pointer", fontWeight: "700", width: "100%", marginBottom: "12px" }}>
+                Sign in with Google - Free!
+              </button>
+              <button onClick={() => setShowLoginPopup(false)}
+                style={{ background: "#eee", border: "none", borderRadius: "10px", padding: "10px 32px", cursor: "pointer", width: "100%" }}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
 
         {showPremium && (
           <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
             <div style={{ background: "#fff", borderRadius: "20px", padding: "40px", maxWidth: "400px", textAlign: "center" }}>
               <div style={{ fontSize: "48px" }}>🚀</div>
-              <h2 style={{ color: "#e53935" }}>Daily Limit Reached!</h2>
-              <p>நீங்கள் இன்றைக்கு 20 free conversions use பண்ணிவிட்டீர்கள்!</p>
-              <p style={{ color: "#666", fontSize: "14px" }}>நாளைக்கு மீண்டும் 20 free conversions கிடைக்கும்!</p>
+              <h2 style={{ color: "#7B2FBE" }}>Daily Limit Reached!</h2>
+              <p>You have used all 15 free conversions today!</p>
+              <p style={{ color: "#666", fontSize: "14px" }}>Come back tomorrow for 15 more free conversions!</p>
               <div style={{ background: "#f5f5f5", borderRadius: "12px", padding: "20px", margin: "16px 0" }}>
-                <h3 style={{ margin: "0 0 8px", color: "#e53935" }}>Premium Coming Soon!</h3>
-                <p style={{ margin: 0, fontSize: "14px" }}>Unlimited conversions • $1/month</p>
+                <h3 style={{ margin: "0 0 8px", color: "#7B2FBE" }}>Premium Coming Soon!</h3>
+                <p style={{ margin: 0, fontSize: "14px" }}>Unlimited conversions - $1/month</p>
               </div>
-              <button onClick={() => setShowPremium(false)} style={{ background: "#e53935", color: "#fff", border: "none", borderRadius: "10px", padding: "12px 32px", cursor: "pointer", fontWeight: "700" }}>OK, நாளைக்கு வருகிறேன்</button>
+              <button onClick={() => setShowPremium(false)} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "10px", padding: "12px 32px", cursor: "pointer", fontWeight: "700" }}>OK, Come back tomorrow</button>
             </div>
           </div>
         )}
@@ -285,29 +334,29 @@ export default function Home() {
     <div style={{ minHeight: "100vh", background: "#f5f7fa", fontFamily: "'Segoe UI', sans-serif" }}>
       <header style={{ background: "#fff", borderBottom: "2px solid #eee", padding: "16px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <span style={{ fontSize: "32px" }}>❤️</span>
+          <WinFreeLogo />
           <div>
-            <h1 style={{ margin: 0, fontSize: "24px", fontWeight: "900", color: "#e53935" }}>WinFreePDF</h1>
-            <p style={{ margin: 0, fontSize: "12px", color: "#888" }}>Free • Fast • Secure • No limits</p>
+            <h1 style={{ margin: 0, fontSize: "24px", fontWeight: "900", color: "#7B2FBE" }}>WinFreePDF</h1>
+            <p style={{ margin: 0, fontSize: "12px", color: "#888" }}>Free - Fast - Secure</p>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           {user ? (
             <>
-              <span style={{ fontSize: "13px", color: "#666" }}>👤 {user.email?.split("@")[0]} | {usageCount}/{FREE_LIMIT} today</span>
+              <span style={{ fontSize: "13px", color: "#666" }}>{user.email?.split("@")[0]} | {usageCount}/{FREE_LIMIT} today</span>
               <button onClick={handleLogout} style={{ background: "#eee", border: "none", borderRadius: "8px", padding: "8px 16px", cursor: "pointer" }}>Logout</button>
             </>
           ) : (
-            <button onClick={handleGoogleLogin} style={{ background: "#4285F4", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 16px", cursor: "pointer", fontWeight: "600" }}>🔐 Google Login</button>
+            <button onClick={handleGoogleLogin} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 16px", cursor: "pointer", fontWeight: "600" }}>Google Login</button>
           )}
-          <span style={{ background: "#e53935", color: "#fff", padding: "6px 16px", borderRadius: "20px", fontSize: "13px", fontWeight: "600" }}>100% FREE</span>
+          <span style={{ background: "#7B2FBE", color: "#fff", padding: "6px 16px", borderRadius: "20px", fontSize: "13px", fontWeight: "600" }}>100% FREE</span>
         </div>
       </header>
 
-      <div style={{ background: "linear-gradient(135deg, #e53935, #ff7043)", padding: "48px 32px", textAlign: "center", color: "#fff" }}>
-        <h2 style={{ fontSize: "36px", fontWeight: "900", margin: "0 0 12px" }}>உன் PDF ஐ எதுவாக வேணும்னாலும் மாற்று!</h2>
-        <p style={{ fontSize: "18px", margin: "0 0 8px", opacity: 0.9 }}>15+ tools • Free • Fast • Secure</p>
-        <p style={{ fontSize: "14px", margin: 0, opacity: 0.8 }}>🔒 உங்கள் files convert ஆனதும் உடனே delete ஆகும் • 100% Safe</p>
+      <div style={{ background: "linear-gradient(135deg, #6C3483, #C39BD3)", padding: "48px 32px", textAlign: "center", color: "#fff" }}>
+        <h2 style={{ fontSize: "36px", fontWeight: "900", margin: "0 0 12px" }}>Convert PDF to Any Format Free!</h2>
+        <p style={{ fontSize: "18px", margin: "0 0 8px", opacity: 0.9 }}>15+ tools - Free - Fast - Secure - No watermark</p>
+        <p style={{ fontSize: "14px", margin: 0, opacity: 0.8 }}>Your files are deleted immediately after conversion - 100% Safe</p>
       </div>
 
       <div style={{ maxWidth: "1200px", margin: "20px auto", padding: "0 16px" }}>
@@ -320,19 +369,19 @@ export default function Home() {
               onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.border = "2px solid transparent"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; }}>
               <div style={{ fontSize: "40px", marginBottom: "12px" }}>{tool.icon}</div>
               <h3 style={{ margin: "0 0 6px", fontSize: "16px", fontWeight: "700", color: "#222" }}>{tool.title}</h3>
-              <p style={{ margin: 0, fontSize: "13px", color: "#888" }}>{tool.desc}</p>
-              <div style={{ marginTop: "12px", color: tool.accent, fontSize: "13px", fontWeight: "600" }}>இப்பவே மாற்று →</div>
+              <p style={{ margin: 0, fontSize: "13px", color: "#666" }}>{tool.desc}</p>
+              <div style={{ marginTop: "12px", color: tool.accent, fontSize: "13px", fontWeight: "600" }}>Convert Now</div>
             </div>
           ))}
         </div>
       </div>
 
       <footer style={{ textAlign: "center", padding: "32px", color: "#aaa", fontSize: "14px", borderTop: "1px solid #eee", marginTop: "40px" }}>
-        <p style={{ marginBottom: "12px" }}>❤️ WinFreePDF — 100% Free Forever</p>
+        <p style={{ marginBottom: "12px" }}>WinFreePDF - 100% Free Forever</p>
         <div style={{ display: "flex", justifyContent: "center", gap: "24px" }}>
-          <button onClick={() => setShowPage("privacy")} style={{ background: "none", border: "none", color: "#e53935", cursor: "pointer", fontSize: "14px" }}>Privacy Policy</button>
-          <button onClick={() => setShowPage("terms")} style={{ background: "none", border: "none", color: "#e53935", cursor: "pointer", fontSize: "14px" }}>Terms & Conditions</button>
-          <button onClick={() => setShowPage("about")} style={{ background: "none", border: "none", color: "#e53935", cursor: "pointer", fontSize: "14px" }}>About Us</button>
+          <button onClick={() => setShowPage("privacy")} style={{ background: "none", border: "none", color: "#7B2FBE", cursor: "pointer", fontSize: "14px" }}>Privacy Policy</button>
+          <button onClick={() => setShowPage("terms")} style={{ background: "none", border: "none", color: "#7B2FBE", cursor: "pointer", fontSize: "14px" }}>Terms and Conditions</button>
+          <button onClick={() => setShowPage("about")} style={{ background: "none", border: "none", color: "#7B2FBE", cursor: "pointer", fontSize: "14px" }}>About Us</button>
         </div>
       </footer>
     </div>
