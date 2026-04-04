@@ -54,4 +54,4 @@ export default function RootLayout({
     </html>
   );
 }
-GitHub → layout.tsx → pencil → replace → Commit! 💪
+
