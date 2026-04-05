@@ -35,6 +35,39 @@ const translations: Record<string, any> = {
     premiumSub: "Unlimited conversions - $1/month",
     ok: "OK, Come back tomorrow",
     selectFile: "Select file",
+    howTitle: "How It Works",
+    how1Title: "1. Choose Your Tool",
+    how1Desc: "Select from 15+ PDF tools — PDF to Word, JPG, Excel, and more. All tools are completely free to use.",
+    how2Title: "2. Upload Your File",
+    how2Desc: "Drag and drop your file or click to browse. We support PDF, Word, Excel, PowerPoint, JPG, and PNG formats.",
+    how3Title: "3. Download Instantly",
+    how3Desc: "Your file is converted in seconds. Download it immediately. Your file is deleted from our servers right away.",
+    whyTitle: "Why Choose WinFreePDF?",
+    why1Title: "100% Free Forever",
+    why1Desc: "WinFreePDF is completely free to use. No hidden charges, no subscriptions required. Convert up to 15 files per day for free after login.",
+    why2Title: "Fast & Secure",
+    why2Desc: "Your files are processed instantly and deleted immediately after conversion. We never store your personal files on our servers.",
+    why3Title: "No Registration Required",
+    why3Desc: "Start converting files immediately without creating an account. Login only needed for more than 3 conversions per day.",
+    why4Title: "15+ Powerful Tools",
+    why4Desc: "From PDF to Word, Excel, JPG, PPT and more. Merge, split, compress, protect and unlock PDF files — all in one place.",
+    why5Title: "Works on All Devices",
+    why5Desc: "WinFreePDF works on desktop, laptop, tablet and mobile. No software installation needed — just open your browser and convert.",
+    why6Title: "Supports Indian Languages",
+    why6Desc: "WinFreePDF supports Tamil, Hindi, Telugu, Malayalam, Kannada, Bengali, Marathi, Gujarati and Punjabi languages.",
+    faqTitle: "Frequently Asked Questions",
+    faq1Q: "Is WinFreePDF really free?",
+    faq1A: "Yes! WinFreePDF is 100% free. Guest users get 3 free conversions. After Google login, you get 15 free conversions every day.",
+    faq2Q: "Are my files safe?",
+    faq2A: "Absolutely! Your files are processed securely and deleted immediately after conversion. We never store your files on our servers.",
+    faq3Q: "What file formats are supported?",
+    faq3A: "We support PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), JPG, and PNG formats. Convert between any of these formats easily.",
+    faq4Q: "Do I need to install any software?",
+    faq4A: "No installation needed! WinFreePDF works directly in your browser. Just visit our website and start converting files instantly.",
+    faq5Q: "How many files can I convert per day?",
+    faq5A: "Guest users can convert 3 files for free. After signing in with Google, you get 15 free conversions every day. Premium plan coming soon for unlimited conversions.",
+    faq6Q: "Which languages does WinFreePDF support?",
+    faq6A: "WinFreePDF supports English, Tamil, Hindi, Telugu, Malayalam, Kannada, Bengali, Marathi, Gujarati and Punjabi. Select your language from the dropdown menu.",
   },
   ta: {
     title: "WinFreePDF",
@@ -59,9 +92,42 @@ const translations: Record<string, any> = {
     limitMsg: "இன்று 15 இலவச conversions முடிந்துவிட்டது!",
     tomorrow: "நாளைக்கு மீண்டும் 15 இலவச conversions கிடைக்கும்!",
     premium: "Premium விரைவில் வருகிறது!",
-    premiumSub: "வரம்பற்ற conversions - மாதம் $1",
+    premiumSub: "வரம்பற்ற conversions - மாதம் ₹80",
     ok: "சரி, நாளைக்கு வருகிறேன்",
     selectFile: "கோப்பு தேர்ந்தெடு",
+    howTitle: "எப்படி பயன்படுத்துவது?",
+    how1Title: "1. கருவி தேர்வு",
+    how1Desc: "15+ PDF கருவிகளில் இருந்து தேர்வு செய்யுங்கள் — PDF to Word, JPG, Excel மற்றும் பலவற்றை. எல்லாம் இலவசம்.",
+    how2Title: "2. File Upload",
+    how2Desc: "உங்கள் file-ஐ drag & drop பண்ணுங்கள் அல்லது click பண்ணி தேர்ந்தெடுங்கள். PDF, Word, Excel, PPT, JPG, PNG ஆகியவற்றை support பண்றோம்.",
+    how3Title: "3. உடனே Download",
+    how3Desc: "சில நொடிகளில் convert ஆகும். உடனே download பண்ணுங்கள். உங்கள் file உடனே delete ஆகும்.",
+    whyTitle: "ஏன் WinFreePDF தேர்வு செய்யணும்?",
+    why1Title: "என்றும் 100% இலவசம்",
+    why1Desc: "WinFreePDF முற்றிலும் இலவசம். மறைந்த கட்டணம் இல்லை. Login-க்கு பிறகு தினமும் 15 conversions இலவசம்.",
+    why2Title: "வேகமான & பாதுகாப்பான",
+    why2Desc: "உங்கள் files உடனே process ஆகும், convert ஆனதும் உடனே delete ஆகும். நாம் உங்கள் files-ஐ சேமிக்கமாட்டோம்.",
+    why3Title: "Registration தேவையில்லை",
+    why3Desc: "Account இல்லாமலேயே convert பண்ணலாம். தினமும் 3-க்கும் அதிகமாக convert பண்ண மட்டும் Login தேவை.",
+    why4Title: "15+ சக்திவாய்ந்த கருவிகள்",
+    why4Desc: "PDF to Word, Excel, JPG, PPT மற்றும் பலவற்றை. Merge, split, compress, protect, unlock — எல்லாம் ஒரே இடத்தில்.",
+    why5Title: "எல்லா devices-லும் வேலை செய்யும்",
+    why5Desc: "Desktop, laptop, tablet, mobile — எல்லாத்திலும் வேலை செய்யும். Software install தேவையில்லை.",
+    why6Title: "இந்திய மொழிகள் support",
+    why6Desc: "தமிழ், Hindi, Telugu, Malayalam, Kannada, Bengali, Marathi, Gujarati, Punjabi ஆகிய மொழிகளை support பண்றோம்.",
+    faqTitle: "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+    faq1Q: "WinFreePDF உண்மையிலேயே இலவசமா?",
+    faq1A: "ஆமா! 100% இலவசம். Guest users 3 conversions இலவசம். Google login-க்கு பிறகு தினமும் 15 conversions இலவசம்.",
+    faq2Q: "என் files பாதுகாப்பாக இருக்குமா?",
+    faq2A: "நிச்சயமாக! உங்கள் files பாதுகாப்பாக process ஆகும், convert ஆனதும் உடனே delete ஆகும். நாம் உங்கள் files-ஐ சேமிக்கமாட்டோம்.",
+    faq3Q: "எந்த file formats support பண்றோம்?",
+    faq3A: "PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), JPG, PNG ஆகியவற்றை support பண்றோம்.",
+    faq4Q: "Software install வேண்டுமா?",
+    faq4A: "தேவையில்லை! WinFreePDF browser-லேயே வேலை செய்யும். வலைத்தளத்திற்கு வந்து உடனே convert பண்ணலாம்.",
+    faq5Q: "தினமும் எத்தனை files convert பண்ணலாம்?",
+    faq5A: "Guest users 3 files இலவசம். Google Sign in-க்கு பிறகு தினமும் 15 conversions இலவசம். Premium plan விரைவில் வருகிறது.",
+    faq6Q: "எந்த மொழிகளை support பண்றோம்?",
+    faq6A: "English, தமிழ், Hindi, Telugu, Malayalam, Kannada, Bengali, Marathi, Gujarati, Punjabi ஆகிய மொழிகளை support பண்றோம்.",
   },
   hi: {
     title: "WinFreePDF",
@@ -86,198 +152,42 @@ const translations: Record<string, any> = {
     limitMsg: "आज के 15 मुफ्त conversions समाप्त हो गए!",
     tomorrow: "कल फिर 15 मुफ्त conversions मिलेंगे!",
     premium: "Premium जल्द आ रहा है!",
-    premiumSub: "असीमित conversions - $1/महीना",
+    premiumSub: "असीमित conversions - ₹80/महीना",
     ok: "ठीक है, कल आऊंगा",
     selectFile: "फ़ाइल चुनें",
-  },
-  te: {
-    title: "WinFreePDF",
-    tagline: "ఉచిత - వేగవంతమైన - సురక్షితమైన",
-    hero: "PDF ని ఏ format లోకైనా మార్చండి!",
-    heroSub: "15+ సాధనాలు - ఉచిత - వేగవంతమైన - సురక్షితమైన",
-    heroSafe: "మీ files convert అయిన వెంటనే తొలగించబడతాయి - 100% సురక్షితం",
-    login: "Google Login",
-    logout: "లాగ్ అవుట్",
-    free: "100% ఉచిత",
-    convertNow: "ఇప్పుడే మార్చండి",
-    dragText: "File drag చేయండి లేదా click చేయండి",
-    converting: "మారుస్తున్నాము... దయచేసి వేచి ఉండండి...",
-    advertisement: "ప్రకటన",
-    privacy: "గోప్యతా విధానం",
-    terms: "నిబంధనలు",
-    about: "మా గురించి",
-    footer: "WinFreePDF - ఎల్లప్పుడూ 100% ఉచిత",
-    guestMsg: "మీరు 3 ఉచిత conversions వాడారు! Login చేసి 15/రోజు ఉచితంగా పొందండి!",
-    loginBtn: "Google తో Sign in చేయండి - ఉచిత!",
-    cancel: "రద్దు చేయి",
-    limitMsg: "ఈరోజు 15 ఉచిత conversions అయిపోయాయి!",
-    tomorrow: "రేపు మళ్ళీ 15 ఉచిత conversions పొందండి!",
-    premium: "Premium త్వరలో వస్తోంది!",
-    premiumSub: "అపరిమిత conversions - నెలకు $1",
-    ok: "సరే, రేపు వస్తాను",
-    selectFile: "ఫైల్ ఎంచుకోండి",
-  },
-  ml: {
-    title: "WinFreePDF",
-    tagline: "സൗജന്യം - വേഗതയുള്ള - സുരക്ഷിതം",
-    hero: "PDF ഏത് Format-ലേക്കും മാറ്റൂ!",
-    heroSub: "15+ ഉപകരണങ്ങൾ - സൗജന്യം - വേഗതയുള്ള - സുരക്ഷിതം",
-    heroSafe: "നിങ്ങളുടെ files convert ആയ ഉടൻ delete ആകും - 100% സുരക്ഷിതം",
-    login: "Google Login",
-    logout: "ലോഗ് ഔട്ട്",
-    free: "100% സൗജന്യം",
-    convertNow: "ഇപ്പോൾ മാറ്റൂ",
-    dragText: "File drag ചെയ്യൂ അല്ലെങ്കിൽ click ചെയ്യൂ",
-    converting: "മാറ്റുന്നു... കാത്തിരിക്കൂ...",
-    advertisement: "പരസ്യം",
-    privacy: "സ്വകാര്യതാ നയം",
-    terms: "നിബന്ധനകൾ",
-    about: "ഞങ്ങളെക്കുറിച്ച്",
-    footer: "WinFreePDF - എന്നും 100% സൗജന്യം",
-    guestMsg: "നിങ്ങൾ 3 സൗജന്യ conversions ഉപയോഗിച്ചു! Login ചെയ്ത് 15/ദിവസം സൗജന്യം നേടൂ!",
-    loginBtn: "Google-ൽ Sign in ചെയ്യൂ - സൗജന്യം!",
-    cancel: "റദ്ദാക്കൂ",
-    limitMsg: "ഇന്നത്തെ 15 സൗജന്യ conversions തീർന്നു!",
-    tomorrow: "നാളെ വീണ്ടും 15 സൗജന്യ conversions ലഭിക്കും!",
-    premium: "Premium ഉടൻ വരുന്നു!",
-    premiumSub: "പരിധിയില്ലാത്ത conversions - മാസം $1",
-    ok: "ശരി, നാളെ വരാം",
-    selectFile: "ഫയൽ തിരഞ്ഞെടുക്കൂ",
-  },
-  kn: {
-    title: "WinFreePDF",
-    tagline: "ಉಚಿತ - ವೇಗ - ಸುರಕ್ಷಿತ",
-    hero: "PDF ಅನ್ನು ಯಾವ Format ಗೂ ಬದಲಾಯಿಸಿ!",
-    heroSub: "15+ ಉಪಕರಣಗಳು - ಉಚಿತ - ವೇಗ - ಸುರಕ್ಷಿತ",
-    heroSafe: "ನಿಮ್ಮ files convert ಆದ ತಕ್ಷಣ delete ಆಗುತ್ತವೆ - 100% ಸುರಕ್ಷಿತ",
-    login: "Google Login",
-    logout: "ಲಾಗ್ ಔಟ್",
-    free: "100% ಉಚಿತ",
-    convertNow: "ಈಗಲೇ ಬದಲಾಯಿಸಿ",
-    dragText: "File drag ಮಾಡಿ ಅಥವಾ click ಮಾಡಿ",
-    converting: "ಬದಲಾಯಿಸುತ್ತಿದ್ದೇವೆ... ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ...",
-    advertisement: "ಜಾಹೀರಾತು",
-    privacy: "ಗೌಪ್ಯತಾ ನೀತಿ",
-    terms: "ನಿಯಮಗಳು",
-    about: "ನಮ್ಮ ಬಗ್ಗೆ",
-    footer: "WinFreePDF - ಯಾವಾಗಲೂ 100% ಉಚಿತ",
-    guestMsg: "ನೀವು 3 ಉಚಿತ conversions ಬಳಸಿದ್ದೀರಿ! Login ಮಾಡಿ 15/ದಿನ ಉಚಿತ ಪಡೆಯಿರಿ!",
-    loginBtn: "Google ನಲ್ಲಿ Sign in ಮಾಡಿ - ಉಚಿತ!",
-    cancel: "ರದ್ದುಮಾಡಿ",
-    limitMsg: "ಇಂದಿನ 15 ಉಚಿತ conversions ಮುಗಿದಿವೆ!",
-    tomorrow: "ನಾಳೆ ಮತ್ತೆ 15 ಉಚಿತ conversions ಸಿಗುತ್ತವೆ!",
-    premium: "Premium ಶೀಘ್ರದಲ್ಲೇ ಬರುತ್ತಿದೆ!",
-    premiumSub: "ಅಪರಿಮಿತ conversions - ತಿಂಗಳಿಗೆ $1",
-    ok: "ಸರಿ, ನಾಳೆ ಬರುತ್ತೇನೆ",
-    selectFile: "ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ",
-  },
-  bn: {
-    title: "WinFreePDF",
-    tagline: "বিনামূল্যে - দ্রুত - নিরাপদ",
-    hero: "PDF যেকোনো Format-এ রূপান্তর করুন!",
-    heroSub: "15+ টুলস - বিনামূল্যে - দ্রুত - নিরাপদ",
-    heroSafe: "আপনার files convert হওয়ার সাথে সাথে delete হয়ে যায় - 100% নিরাপদ",
-    login: "Google Login",
-    logout: "লগ আউট",
-    free: "100% বিনামূল্যে",
-    convertNow: "এখনই রূপান্তর করুন",
-    dragText: "File drag করুন বা click করুন",
-    converting: "রূপান্তরিত হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন...",
-    advertisement: "বিজ্ঞাপন",
-    privacy: "গোপনীয়তা নীতি",
-    terms: "শর্তাবলী",
-    about: "আমাদের সম্পর্কে",
-    footer: "WinFreePDF - সবসময় 100% বিনামূল্যে",
-    guestMsg: "আপনি 3টি বিনামূল্যে conversion ব্যবহার করেছেন! Login করুন এবং 15/দিন বিনামূল্যে পান!",
-    loginBtn: "Google দিয়ে Sign in করুন - বিনামূল্যে!",
-    cancel: "বাতিল করুন",
-    limitMsg: "আজকের 15টি বিনামূল্যে conversion শেষ!",
-    tomorrow: "আগামীকাল আবার 15টি বিনামূল্যে conversion পাবেন!",
-    premium: "Premium শীঘ্রই আসছে!",
-    premiumSub: "সীমাহীন conversion - মাসে $1",
-    ok: "ঠিক আছে, আগামীকাল আসব",
-    selectFile: "ফাইল নির্বাচন করুন",
-  },
-  mr: {
-    title: "WinFreePDF",
-    tagline: "मोफत - जलद - सुरक्षित",
-    hero: "PDF कोणत्याही Format मध्ये बदला!",
-    heroSub: "15+ साधने - मोफत - जलद - सुरक्षित",
-    heroSafe: "तुमच्या files convert झाल्यावर लगेच delete होतात - 100% सुरक्षित",
-    login: "Google Login",
-    logout: "लॉग आउट",
-    free: "100% मोफत",
-    convertNow: "आत्ता बदला",
-    dragText: "File drag करा किंवा click करा",
-    converting: "बदलत आहे... कृपया थांबा...",
-    advertisement: "जाहिरात",
-    privacy: "गोपनीयता धोरण",
-    terms: "अटी व शर्ती",
-    about: "आमच्याबद्दल",
-    footer: "WinFreePDF - नेहमी 100% मोफत",
-    guestMsg: "तुम्ही 3 मोफत conversions वापरले! Login करा आणि 15/दिवस मोफत मिळवा!",
-    loginBtn: "Google ने Sign in करा - मोफत!",
-    cancel: "रद्द करा",
-    limitMsg: "आजचे 15 मोफत conversions संपले!",
-    tomorrow: "उद्या पुन्हा 15 मोफत conversions मिळतील!",
-    premium: "Premium लवकरच येत आहे!",
-    premiumSub: "अमर्यादित conversions - महिन्याला $1",
-    ok: "ठीक आहे, उद्या येतो",
-    selectFile: "फाइल निवडा",
-  },
-  gu: {
-    title: "WinFreePDF",
-    tagline: "મફત - ઝડપી - સુરક્ષિત",
-    hero: "PDF ને કોઈ પણ Format માં બદલો!",
-    heroSub: "15+ સાધનો - મફત - ઝડપી - સુરક્ષિત",
-    heroSafe: "તમારી files convert થયા પછી તરત delete થઈ જાય છે - 100% સુરક્ષિત",
-    login: "Google Login",
-    logout: "લૉગ આઉટ",
-    free: "100% મફત",
-    convertNow: "હમણાં જ બદલો",
-    dragText: "File drag કરો અથવા click કરો",
-    converting: "બદલી રહ્યા છીએ... કૃપા કરીને રાહ જુઓ...",
-    advertisement: "જાહેરાત",
-    privacy: "ગોપનીયતા નીતિ",
-    terms: "નિયમો અને શરતો",
-    about: "અમારા વિશે",
-    footer: "WinFreePDF - હંમેશા 100% મફત",
-    guestMsg: "તમે 3 મફત conversions વાપર્યા! Login કરો અને 15/દિવસ મફત મેળવો!",
-    loginBtn: "Google સાથે Sign in કરો - મફત!",
-    cancel: "રદ કરો",
-    limitMsg: "આજના 15 મફત conversions પૂરા થઈ ગયા!",
-    tomorrow: "કાલે ફરીથી 15 મફત conversions મળશે!",
-    premium: "Premium ટૂંક સમયમાં આવે છે!",
-    premiumSub: "અમર્યાદિત conversions - મહિને $1",
-    ok: "ઠીક છે, કાલે આવીશ",
-    selectFile: "ફાઇલ પસંદ કરો",
-  },
-  pa: {
-    title: "WinFreePDF",
-    tagline: "ਮੁਫ਼ਤ - ਤੇਜ਼ - ਸੁਰੱਖਿਅਤ",
-    hero: "PDF ਨੂੰ ਕਿਸੇ ਵੀ Format ਵਿੱਚ ਬਦਲੋ!",
-    heroSub: "15+ ਸਾਧਨ - ਮੁਫ਼ਤ - ਤੇਜ਼ - ਸੁਰੱਖਿਅਤ",
-    heroSafe: "ਤੁਹਾਡੀਆਂ files convert ਹੋਣ ਤੋਂ ਬਾਅਦ ਤੁਰੰਤ delete ਹੋ ਜਾਂਦੀਆਂ ਹਨ",
-    login: "Google Login",
-    logout: "ਲੌਗ ਆਊਟ",
-    free: "100% ਮੁਫ਼ਤ",
-    convertNow: "ਹੁਣੇ ਬਦਲੋ",
-    dragText: "File drag ਕਰੋ ਜਾਂ click ਕਰੋ",
-    converting: "ਬਦਲ ਰਿਹਾ ਹੈ... ਕਿਰਪਾ ਕਰਕੇ ਉਡੀਕ ਕਰੋ...",
-    advertisement: "ਇਸ਼ਤਿਹਾਰ",
-    privacy: "ਗੋਪਨੀਯਤਾ ਨੀਤੀ",
-    terms: "ਨਿਯਮ ਅਤੇ ਸ਼ਰਤਾਂ",
-    about: "ਸਾਡੇ ਬਾਰੇ",
-    footer: "WinFreePDF - ਹਮੇਸ਼ਾ 100% ਮੁਫ਼ਤ",
-    guestMsg: "ਤੁਸੀਂ 3 ਮੁਫ਼ਤ conversions ਵਰਤੇ! Login ਕਰੋ ਅਤੇ 15/ਦਿਨ ਮੁਫ਼ਤ ਪਾਓ!",
-    loginBtn: "Google ਨਾਲ Sign in ਕਰੋ - ਮੁਫ਼ਤ!",
-    cancel: "ਰੱਦ ਕਰੋ",
-    limitMsg: "ਅੱਜ ਦੇ 15 ਮੁਫ਼ਤ conversions ਖਤਮ ਹੋ ਗਏ!",
-    tomorrow: "ਕੱਲ੍ਹ ਫਿਰ 15 ਮੁਫ਼ਤ conversions ਮਿਲਣਗੇ!",
-    premium: "Premium ਜਲਦੀ ਆ ਰਿਹਾ ਹੈ!",
-    premiumSub: "ਅਸੀਮਤ conversions - ਮਹੀਨੇ $1",
-    ok: "ਠੀਕ ਹੈ, ਕੱਲ੍ਹ ਆਵਾਂਗਾ",
-    selectFile: "ਫ਼ਾਈਲ ਚੁਣੋ",
+    howTitle: "यह कैसे काम करता है?",
+    how1Title: "1. टूल चुनें",
+    how1Desc: "15+ PDF टूल्स में से चुनें — PDF to Word, JPG, Excel और बहुत कुछ। सभी टूल्स बिल्कुल मुफ्त हैं।",
+    how2Title: "2. File Upload करें",
+    how2Desc: "अपनी file drag & drop करें या click करके चुनें। PDF, Word, Excel, PPT, JPG, PNG सभी supported हैं।",
+    how3Title: "3. तुरंत Download करें",
+    how3Desc: "आपकी file कुछ सेकंड में convert हो जाएगी। तुरंत download करें। आपकी file तुरंत delete हो जाती है।",
+    whyTitle: "WinFreePDF क्यों चुनें?",
+    why1Title: "हमेशा 100% मुफ्त",
+    why1Desc: "WinFreePDF पूरी तरह मुफ्त है। कोई छुपा हुआ शुल्क नहीं। Login के बाद रोज 15 conversions मुफ्त।",
+    why2Title: "तेज़ और सुरक्षित",
+    why2Desc: "आपकी files तुरंत process होती हैं और convert होने के बाद तुरंत delete हो जाती हैं।",
+    why3Title: "Registration जरूरी नहीं",
+    why3Desc: "बिना account बनाए convert करें। रोज 3 से ज्यादा conversions के लिए Login जरूरी है।",
+    why4Title: "15+ शक्तिशाली टूल्स",
+    why4Desc: "PDF to Word, Excel, JPG, PPT और बहुत कुछ। Merge, split, compress, protect — सब एक जगह।",
+    why5Title: "सभी devices पर काम करता है",
+    why5Desc: "Desktop, laptop, tablet, mobile — सभी पर काम करता है। कोई software install नहीं चाहिए।",
+    why6Title: "भारतीय भाषाओं का support",
+    why6Desc: "हिंदी, Tamil, Telugu, Malayalam, Kannada, Bengali, Marathi, Gujarati, Punjabi भाषाओं का support।",
+    faqTitle: "अक्सर पूछे जाने वाले सवाल",
+    faq1Q: "क्या WinFreePDF सच में मुफ्त है?",
+    faq1A: "हाँ! 100% मुफ्त। Guest users को 3 मुफ्त conversions मिलते हैं। Google login के बाद रोज 15 मुफ्त conversions।",
+    faq2Q: "क्या मेरी files सुरक्षित हैं?",
+    faq2A: "बिल्कुल! आपकी files सुरक्षित रूप से process होती हैं और convert होने के बाद तुरंत delete हो जाती हैं।",
+    faq3Q: "कौन से file formats supported हैं?",
+    faq3A: "PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), JPG, PNG सभी supported हैं।",
+    faq4Q: "क्या software install करना होगा?",
+    faq4A: "नहीं! WinFreePDF सीधे browser में काम करता है। बस website खोलें और convert करना शुरू करें।",
+    faq5Q: "रोज कितनी files convert कर सकते हैं?",
+    faq5A: "Guest users 3 files मुफ्त। Google Sign in के बाद रोज 15 conversions मुफ्त। Premium plan जल्द आ रहा है।",
+    faq6Q: "कौन सी भाषाएं supported हैं?",
+    faq6A: "English, हिंदी, Tamil, Telugu, Malayalam, Kannada, Bengali, Marathi, Gujarati, Punjabi सभी supported हैं।",
   },
 };
  
@@ -295,21 +205,21 @@ const languageNames: Record<string, string> = {
 };
  
 const toolTranslations: Record<string, Record<string, string>> = {
-  "pdf-to-word": { en: "Convert PDF to editable Word documents instantly.", ta: "PDF ஐ உடனடியாக திருத்தக்கூடிய Word ஆக மாற்று.", hi: "PDF को तुरंत editable Word में बदलें।", te: "PDF ని వెంటనే editable Word గా మార్చండి.", ml: "PDF ഉടൻ editable Word ആക്കൂ.", kn: "PDF ಅನ್ನು ತಕ್ಷಣ editable Word ಗೆ ಬದಲಾಯಿಸಿ.", bn: "PDF কে তাৎক্ষণিক editable Word এ রূপান্তর করুন।", mr: "PDF ला लगेच editable Word मध्ये बदला.", gu: "PDF ને તરત editable Word માં બદલો.", pa: "PDF ਨੂੰ ਤੁਰੰਤ editable Word ਵਿੱਚ ਬਦਲੋ।" },
-  "word-to-pdf": { en: "Convert Word documents to PDF format easily.", ta: "Word ஐ எளிதாக PDF ஆக மாற்று.", hi: "Word को आसानी से PDF में बदलें।", te: "Word ని సులభంగా PDF గా మార్చండి.", ml: "Word എളുപ്പത്തിൽ PDF ആക്കൂ.", kn: "Word ಅನ್ನು ಸುಲಭವಾಗಿ PDF ಗೆ ಬದಲಾಯಿಸಿ.", bn: "Word কে সহজে PDF এ রূপান্তর করুন।", mr: "Word ला सहजपणे PDF मध्ये बदला.", gu: "Word ને સરળતાથી PDF માં બદલો.", pa: "Word ਨੂੰ ਆਸਾਨੀ ਨਾਲ PDF ਵਿੱਚ ਬਦਲੋ।" },
-  "pdf-to-excel": { en: "Extract tables from PDF to Excel automatically.", ta: "PDF இலிருந்து Excel-க்கு tables தானாக extract பண்ணு.", hi: "PDF से Excel में tables automatically extract करें।", te: "PDF నుండి Excel కి tables automatically extract చేయండి.", ml: "PDF ൽ നിന്ന് Excel-ലേക്ക് tables extract ചെയ്യൂ.", kn: "PDF ನಿಂದ Excel ಗೆ tables ತಾನಾಗಿ extract ಮಾಡಿ.", bn: "PDF থেকে Excel এ tables স্বয়ংক্রিয়ভাবে extract করুন।", mr: "PDF मधून Excel मध्ये tables आपोआप काढा.", gu: "PDF માંથી Excel માં tables આપોઆપ extract કરો.", pa: "PDF ਤੋਂ Excel ਵਿੱਚ tables ਆਪਣੇ ਆਪ extract ਕਰੋ।" },
-  "excel-to-pdf": { en: "Convert Excel spreadsheets to PDF in seconds.", ta: "Excel ஐ சில நொடிகளில் PDF ஆக மாற்று.", hi: "Excel को कुछ सेकंड में PDF में बदलें।", te: "Excel ని సెకన్లలో PDF గా మార్చండి.", ml: "Excel സെക്കൻഡുകളിൽ PDF ആക്കൂ.", kn: "Excel ಅನ್ನು ಕ್ಷಣಗಳಲ್ಲಿ PDF ಗೆ ಬದಲಾಯಿಸಿ.", bn: "Excel কে মুহূর্তের মধ্যে PDF এ রূপান্তর করুন।", mr: "Excel ला काही सेकंदात PDF मध्ये बदला.", gu: "Excel ને સેકન્ડોમાં PDF માં બદલો.", pa: "Excel ਨੂੰ ਸਕਿੰਟਾਂ ਵਿੱਚ PDF ਵਿੱਚ ਬਦਲੋ।" },
-  "pdf-to-jpg": { en: "Convert PDF pages to high quality JPG images.", ta: "PDF pages ஐ உயர்தர JPG images ஆக மாற்று.", hi: "PDF pages को high quality JPG images में बदलें।", te: "PDF pages ని high quality JPG గా మార్చండి.", ml: "PDF pages ഉയർന്ന നിലവാരമുള്ള JPG ആക്കൂ.", kn: "PDF pages ಅನ್ನು high quality JPG ಗೆ ಬದಲಾಯಿಸಿ.", bn: "PDF pages কে high quality JPG এ রূপান্তর করুন।", mr: "PDF pages ला high quality JPG मध्ये बदला.", gu: "PDF pages ને high quality JPG માં બદલો.", pa: "PDF pages ਨੂੰ high quality JPG ਵਿੱਚ ਬਦਲੋ।" },
-  "jpg-to-pdf": { en: "Convert JPG images to PDF documents instantly.", ta: "JPG images ஐ உடனடியாக PDF ஆக மாற்று.", hi: "JPG images को तुरंत PDF में बदलें।", te: "JPG images ని వెంటనే PDF గా మార్చండి.", ml: "JPG images ഉടൻ PDF ആക്കൂ.", kn: "JPG images ಅನ್ನು ತಕ್ಷಣ PDF ಗೆ ಬದಲಾಯಿಸಿ.", bn: "JPG images কে তাৎক্ষণিক PDF এ রূপান্তর করুন।", mr: "JPG images ला लगेच PDF मध्ये बदला.", gu: "JPG images ને તરત PDF માં બદલો.", pa: "JPG images ਨੂੰ ਤੁਰੰਤ PDF ਵਿੱਚ ਬਦਲੋ।" },
-  "png-to-pdf": { en: "Convert PNG images to PDF format free.", ta: "PNG images ஐ இலவசமாக PDF ஆக மாற்று.", hi: "PNG images को मुफ्त में PDF में बदलें।", te: "PNG images ని ఉచితంగా PDF గా మార్చండి.", ml: "PNG images സൗജന്യമായി PDF ആക്കൂ.", kn: "PNG images ಅನ್ನು ಉಚಿತವಾಗಿ PDF ಗೆ ಬದಲಾಯಿಸಿ.", bn: "PNG images কে বিনামূল্যে PDF এ রূপান্তর করুন।", mr: "PNG images ला मोफत PDF मध्ये बदला.", gu: "PNG images ને મફત PDF માં બદલો.", pa: "PNG images ਨੂੰ ਮੁਫ਼ਤ PDF ਵਿੱਚ ਬਦਲੋ।" },
-  "pdf-to-ppt": { en: "Convert PDF to PowerPoint presentations easily.", ta: "PDF ஐ எளிதாக PowerPoint ஆக மாற்று.", hi: "PDF को आसानी से PowerPoint में बदलें।", te: "PDF ని సులభంగా PowerPoint గా మార్చండి.", ml: "PDF എളുപ்பത്തിൽ PowerPoint ആക്കൂ.", kn: "PDF ಅನ್ನು ಸುಲಭವಾಗಿ PowerPoint ಗೆ ಬದಲಾಯಿಸಿ.", bn: "PDF কে সহজে PowerPoint এ রূপান্তর করুন।", mr: "PDF ला सहजपणे PowerPoint मध्ये बदला.", gu: "PDF ને સરળતાથી PowerPoint માં બદલો.", pa: "PDF ਨੂੰ ਆਸਾਨੀ ਨਾਲ PowerPoint ਵਿੱਚ ਬਦਲੋ।" },
-  "ppt-to-pdf": { en: "Convert PowerPoint presentations to PDF online.", ta: "PowerPoint ஐ online-ல் PDF ஆக மாற்று.", hi: "PowerPoint को online PDF में बदलें।", te: "PowerPoint ని online PDF గా మార్చండి.", ml: "PowerPoint online PDF ആക്കൂ.", kn: "PowerPoint ಅನ್ನು online PDF ಗೆ ಬದಲಾಯಿಸಿ.", bn: "PowerPoint কে online PDF এ রূপান্তর করুন।", mr: "PowerPoint ला online PDF मध्ये बदला.", gu: "PowerPoint ને online PDF માં બદલો.", pa: "PowerPoint ਨੂੰ online PDF ਵਿੱਚ ਬਦਲੋ।" },
-  "merge-pdf": { en: "Combine multiple PDF files into one document.", ta: "பல PDF files ஐ ஒரு document-ஆக இணை.", hi: "कई PDF files को एक document में जोड़ें।", te: "అనేక PDF files ని ఒక document గా కలపండి.", ml: "പല PDF files ഒന്നിൽ ചേർക്കൂ.", kn: "ಅನೇಕ PDF files ಅನ್ನು ಒಂದು document ಆಗಿ ಸೇರಿಸಿ.", bn: "একাধিক PDF files কে একটি document এ মিলান।", mr: "अनेक PDF files एका document मध्ये जोडा.", gu: "ઘણી PDF files ને એક document માં ભેગી કરો.", pa: "ਕਈ PDF files ਨੂੰ ਇੱਕ document ਵਿੱਚ ਜੋੜੋ।" },
-  "compress-pdf": { en: "Reduce PDF file size without losing quality.", ta: "தரம் இழக்காமல் PDF size குறை.", hi: "बिना quality खोए PDF size कम करें।", te: "నాణ్యత కోల్పోకుండా PDF size తగ్గించండి.", ml: "ഗുണനിലവാരം നഷ്ടപ്പെടാതെ PDF size കുറക്കൂ.", kn: "ಗುಣಮಟ್ಟ ಕಳೆದುಕೊಳ್ಳದೆ PDF size ಕಡಿಮೆ ಮಾಡಿ.", bn: "মান না হারিয়ে PDF size কমান।", mr: "दर्जा न गमावता PDF size कमी करा.", gu: "ગુણવત્તા ગુમાવ્યા વિના PDF size ઘટાડો.", pa: "ਗੁਣਵੱਤਾ ਗੁਆਏ ਬਿਨਾਂ PDF size ਘਟਾਓ।" },
-  "split-pdf": { en: "Split PDF into multiple separate files.", ta: "PDF ஐ பல தனி files ஆக பிரி.", hi: "PDF को कई अलग files में विभाजित करें।", te: "PDF ని అనేక వేర్వేరు files గా విభజించండి.", ml: "PDF പല ഫയലുകളായി വിഭജിക്കൂ.", kn: "PDF ಅನ್ನು ಅನೇಕ ಪ್ರತ್ಯೇಕ files ಆಗಿ ವಿಭಜಿಸಿ.", bn: "PDF কে একাধিক আলাদা files এ ভাগ করুন।", mr: "PDF ला अनेक वेगळ्या files मध्ये विभाजित करा.", gu: "PDF ને ઘણી અલગ files માં વિભાજित કરો.", pa: "PDF ਨੂੰ ਕਈ ਵੱਖਰੀਆਂ files ਵਿੱਚ ਵੰਡੋ।" },
-  "rotate-pdf": { en: "Rotate PDF pages to any angle easily.", ta: "PDF pages ஐ எந்த angle-லும் திரும்பு.", hi: "PDF pages को किसी भी angle में घुमाएं।", te: "PDF pages ని ఏ కోణంలోనైనా తిప్పండి.", ml: "PDF pages ഏത് കോണിലും തിരിക്കൂ.", kn: "PDF pages ಅನ್ನು ಯಾವ ಕೋನಕ್ಕೂ ತಿರುಗಿಸಿ.", bn: "PDF pages কে যেকোনো angle এ ঘোরান।", mr: "PDF pages कोणत्याही angle मध्ये फिरवा.", gu: "PDF pages ને કોઈ પણ angle પર ફેરવો.", pa: "PDF pages ਨੂੰ ਕਿਸੇ ਵੀ angle ਵਿੱਚ ਘੁਮਾਓ।" },
-  "protect-pdf": { en: "Add password protection to secure your PDF.", ta: "உங்கள் PDF-க்கு password பாதுகாப்பு சேர்.", hi: "अपने PDF को password से सुरक्षित करें।", te: "మీ PDF కి password రక్షణ జోడించండి.", ml: "നിങ്ങളുടെ PDF-ന് password സംരക്ഷണം ചേർക്കൂ.", kn: "ನಿಮ್ಮ PDF ಗೆ password ರಕ್ಷಣೆ ಸೇರಿಸಿ.", bn: "আপনার PDF কে password দিয়ে সুরক্ষিত করুন।", mr: "तुमच्या PDF ला password संरक्षण द्या.", gu: "તમારા PDF ને password સુરક્ષા આપો.", pa: "ਆਪਣੇ PDF ਨੂੰ password ਨਾਲ ਸੁਰੱਖਿਅਤ ਕਰੋ।" },
-  "unlock-pdf": { en: "Remove password from protected PDF files.", ta: "பாதுகாக்கப்பட்ட PDF-ல் இருந்து password நீக்கு.", hi: "Protected PDF से password हटाएं।", te: "Protected PDF నుండి password తొలగించండి.", ml: "Protected PDF-ൽ നിന്ന് password നീക്കൂ.", kn: "Protected PDF ನಿಂದ password ತೆಗೆಯಿರಿ.", bn: "Protected PDF থেকে password সরান।", mr: "Protected PDF मधून password काढा.", gu: "Protected PDF માંથી password દૂર કરો.", pa: "Protected PDF ਤੋਂ password ਹਟਾਓ।" },
+  "pdf-to-word": { en: "Convert PDF to editable Word documents instantly.", ta: "PDF ஐ உடனடியாக திருத்தக்கூடிய Word ஆக மாற்று.", hi: "PDF को तुरंत editable Word में बदलें।" },
+  "word-to-pdf": { en: "Convert Word documents to PDF format easily.", ta: "Word ஐ எளிதாக PDF ஆக மாற்று.", hi: "Word को आसानी से PDF में बदलें।" },
+  "pdf-to-excel": { en: "Extract tables from PDF to Excel automatically.", ta: "PDF இலிருந்து Excel-க்கு tables தானாக.", hi: "PDF से Excel में tables automatically।" },
+  "excel-to-pdf": { en: "Convert Excel spreadsheets to PDF in seconds.", ta: "Excel ஐ சில நொடிகளில் PDF ஆக மாற்று.", hi: "Excel को कुछ सेकंड में PDF में बदलें।" },
+  "pdf-to-jpg": { en: "Convert PDF pages to high quality JPG images.", ta: "PDF pages ஐ உயர்தர JPG images ஆக மாற்று.", hi: "PDF pages को high quality JPG में बदलें।" },
+  "jpg-to-pdf": { en: "Convert JPG images to PDF documents instantly.", ta: "JPG images ஐ உடனடியாக PDF ஆக மாற்று.", hi: "JPG images को तुरंत PDF में बदलें।" },
+  "png-to-pdf": { en: "Convert PNG images to PDF format free.", ta: "PNG images ஐ இலவசமாக PDF ஆக மாற்று.", hi: "PNG images को मुफ्त में PDF में बदलें।" },
+  "pdf-to-ppt": { en: "Convert PDF to PowerPoint presentations easily.", ta: "PDF ஐ எளிதாக PowerPoint ஆக மாற்று.", hi: "PDF को आसानी से PowerPoint में बदलें।" },
+  "ppt-to-pdf": { en: "Convert PowerPoint presentations to PDF online.", ta: "PowerPoint ஐ online-ல் PDF ஆக மாற்று.", hi: "PowerPoint को online PDF में बदलें।" },
+  "merge-pdf": { en: "Combine multiple PDF files into one document.", ta: "பல PDF files ஐ ஒரு document-ஆக இணை.", hi: "कई PDF files को एक document में जोड़ें।" },
+  "compress-pdf": { en: "Reduce PDF file size without losing quality.", ta: "தரம் இழக்காமல் PDF size குறை.", hi: "बिना quality खोए PDF size कम करें।" },
+  "split-pdf": { en: "Split PDF into multiple separate files.", ta: "PDF ஐ பல தனி files ஆக பிரி.", hi: "PDF को कई अलग files में विभाजित करें।" },
+  "rotate-pdf": { en: "Rotate PDF pages to any angle easily.", ta: "PDF pages ஐ எந்த angle-லும் திரும்பு.", hi: "PDF pages को किसी भी angle में घुमाएं।" },
+  "protect-pdf": { en: "Add password protection to secure your PDF.", ta: "உங்கள் PDF-க்கு password பாதுகாப்பு சேர்.", hi: "अपने PDF को password से सुरक्षित करें।" },
+  "unlock-pdf": { en: "Remove password from protected PDF files.", ta: "பாதுகாக்கப்பட்ட PDF-ல் இருந்து password நீக்கு.", hi: "Protected PDF से password हटाएं।" },
 };
  
 const tools = [
@@ -369,6 +279,84 @@ function WinFreeLogo() {
   );
 }
  
+function HowItWorks({ t }: { t: any }) {
+  return (
+    <div style={{ background: "#fff", padding: "48px 32px", marginTop: "32px" }}>
+      <h2 style={{ textAlign: "center", fontSize: "28px", fontWeight: "800", color: "#7B2FBE", marginBottom: "32px" }}>{t.howTitle}</h2>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "24px", maxWidth: "1000px", margin: "0 auto" }}>
+        {[
+          { title: t.how1Title, desc: t.how1Desc, icon: "🛠️" },
+          { title: t.how2Title, desc: t.how2Desc, icon: "📤" },
+          { title: t.how3Title, desc: t.how3Desc, icon: "⬇️" },
+        ].map((item, i) => (
+          <div key={i} style={{ textAlign: "center", padding: "24px", background: "#f8f0ff", borderRadius: "16px" }}>
+            <div style={{ fontSize: "48px", marginBottom: "12px" }}>{item.icon}</div>
+            <h3 style={{ color: "#7B2FBE", fontSize: "18px", marginBottom: "8px" }}>{item.title}</h3>
+            <p style={{ color: "#666", fontSize: "14px", lineHeight: "1.6" }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+ 
+function WhyChooseUs({ t }: { t: any }) {
+  return (
+    <div style={{ background: "linear-gradient(135deg, #f8f0ff, #fff)", padding: "48px 32px", marginTop: "8px" }}>
+      <h2 style={{ textAlign: "center", fontSize: "28px", fontWeight: "800", color: "#7B2FBE", marginBottom: "32px" }}>{t.whyTitle}</h2>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "20px", maxWidth: "1100px", margin: "0 auto" }}>
+        {[
+          { title: t.why1Title, desc: t.why1Desc, icon: "🆓" },
+          { title: t.why2Title, desc: t.why2Desc, icon: "🔒" },
+          { title: t.why3Title, desc: t.why3Desc, icon: "⚡" },
+          { title: t.why4Title, desc: t.why4Desc, icon: "🛠️" },
+          { title: t.why5Title, desc: t.why5Desc, icon: "📱" },
+          { title: t.why6Title, desc: t.why6Desc, icon: "🌏" },
+        ].map((item, i) => (
+          <div key={i} style={{ padding: "20px", background: "#fff", borderRadius: "12px", boxShadow: "0 2px 8px rgba(123,47,190,0.08)", borderLeft: "4px solid #7B2FBE" }}>
+            <div style={{ fontSize: "32px", marginBottom: "8px" }}>{item.icon}</div>
+            <h3 style={{ color: "#7B2FBE", fontSize: "16px", marginBottom: "6px", fontWeight: "700" }}>{item.title}</h3>
+            <p style={{ color: "#666", fontSize: "13px", lineHeight: "1.6", margin: 0 }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+ 
+function FAQ({ t }: { t: any }) {
+  const [open, setOpen] = useState<number | null>(null);
+  const faqs = [
+    { q: t.faq1Q, a: t.faq1A },
+    { q: t.faq2Q, a: t.faq2A },
+    { q: t.faq3Q, a: t.faq3A },
+    { q: t.faq4Q, a: t.faq4A },
+    { q: t.faq5Q, a: t.faq5A },
+    { q: t.faq6Q, a: t.faq6A },
+  ];
+  return (
+    <div style={{ background: "#fff", padding: "48px 32px", marginTop: "8px" }}>
+      <h2 style={{ textAlign: "center", fontSize: "28px", fontWeight: "800", color: "#7B2FBE", marginBottom: "32px" }}>{t.faqTitle}</h2>
+      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+        {faqs.map((faq, i) => (
+          <div key={i} style={{ marginBottom: "12px", border: "1px solid #e8d5ff", borderRadius: "12px", overflow: "hidden" }}>
+            <button onClick={() => setOpen(open === i ? null : i)}
+              style={{ width: "100%", padding: "16px 20px", background: open === i ? "#f8f0ff" : "#fff", border: "none", textAlign: "left", cursor: "pointer", fontSize: "15px", fontWeight: "600", color: "#333", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              {faq.q}
+              <span style={{ color: "#7B2FBE", fontSize: "20px" }}>{open === i ? "−" : "+"}</span>
+            </button>
+            {open === i && (
+              <div style={{ padding: "16px 20px", background: "#f8f0ff", fontSize: "14px", color: "#555", lineHeight: "1.7", borderTop: "1px solid #e8d5ff" }}>
+                {faq.a}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+ 
 export default function Home() {
   const [lang, setLang] = useState("en");
   const t = translations[lang] || translations.en;
@@ -390,7 +378,10 @@ export default function Home() {
   useEffect(() => {
     const savedGuest = parseInt(localStorage.getItem("guestCount") || "0");
     setGuestCount(savedGuest);
-    const savedLang = localStorage.getItem("lang") || "en";
+    const browserLang = navigator.language.slice(0, 2);
+    const supportedLangs = ["en","ta","hi","te","ml","kn","bn","mr","gu","pa"];
+    const savedLang = localStorage.getItem("lang") ||
+      (supportedLangs.includes(browserLang) ? browserLang : "en");
     setLang(savedLang);
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
@@ -449,34 +440,22 @@ export default function Home() {
  
   const handleConvert = async () => {
     if (!file || !selectedTool) { setStatus(t.selectFile); return; }
- 
     if (!user) {
       const newGuestCount = guestCount + 1;
-      if (newGuestCount > GUEST_LIMIT) {
-        setShowLoginPopup(true);
-        return;
-      }
+      if (newGuestCount > GUEST_LIMIT) { setShowLoginPopup(true); return; }
       setGuestCount(newGuestCount);
       localStorage.setItem("guestCount", newGuestCount.toString());
     }
- 
-    if (user && usageCount >= FREE_LIMIT) {
-      setShowPremium(true);
-      return;
-    }
- 
+    if (user && usageCount >= FREE_LIMIT) { setShowPremium(true); return; }
     setLoading(true);
     setShowAd(false);
     setStatus(t.converting);
- 
     try {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("outputFormat", selectedTool.outputFormat);
- 
       const res = await fetch("/api/convert", { method: "POST", body: formData });
       if (!res.ok) throw new Error("Conversion failed");
- 
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -486,7 +465,6 @@ export default function Home() {
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
- 
       if (user) {
         const newCount = usageCount + 1;
         setUsageCount(newCount);
@@ -508,8 +486,15 @@ export default function Home() {
       <div style={{ minHeight: "100vh", background: "#f5f7fa", padding: "32px", fontFamily: "'Segoe UI', sans-serif" }}>
         <button onClick={() => setShowPage(null)} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>← Back</button>
         <h1 style={{ color: "#7B2FBE" }}>{t.privacy}</h1>
-        <p>Your uploaded files are deleted immediately after conversion. We never store any files.</p>
-        <p>We collect only your email via Google Login to track conversion count.</p>
+        <h2>1. Files & Data</h2>
+        <p>Your uploaded files are processed securely and deleted immediately after conversion. We never store your files on our servers.</p>
+        <h2>2. Personal Information</h2>
+        <p>We collect only your email address via Google Login to track your daily conversion count. We do not share your information with third parties.</p>
+        <h2>3. Cookies</h2>
+        <p>We use cookies to save your language preference and conversion count. Google AdSense may use cookies to show personalized advertisements.</p>
+        <h2>4. Google AdSense</h2>
+        <p>This website uses Google AdSense to display advertisements. Google may use cookies to show ads based on your interests.</p>
+        <h2>5. Contact</h2>
         <p>Email: umashri414@gmail.com</p>
       </div>
     );
@@ -520,8 +505,16 @@ export default function Home() {
       <div style={{ minHeight: "100vh", background: "#f5f7fa", padding: "32px", fontFamily: "'Segoe UI', sans-serif" }}>
         <button onClick={() => setShowPage(null)} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>← Back</button>
         <h1 style={{ color: "#7B2FBE" }}>{t.terms}</h1>
-        <p>Free users: 15 conversions per day. Guest users: 3 conversions free.</p>
-        <p>Uploaded files are deleted immediately after conversion.</p>
+        <h2>1. Usage</h2>
+        <p>Guest users get 3 free conversions. Registered users get 15 free conversions per day. You must not use this service for illegal purposes.</p>
+        <h2>2. File Safety</h2>
+        <p>Uploaded files are deleted immediately after conversion. We are not responsible for any data loss during conversion.</p>
+        <h2>3. Service Availability</h2>
+        <p>We strive to keep WinFreePDF available 24/7 but cannot guarantee uninterrupted service.</p>
+        <h2>4. Advertisements</h2>
+        <p>This site displays Google AdSense advertisements to support free service for all users.</p>
+        <h2>5. Contact</h2>
+        <p>Email: umashri414@gmail.com</p>
       </div>
     );
   }
@@ -531,8 +524,14 @@ export default function Home() {
       <div style={{ minHeight: "100vh", background: "#f5f7fa", padding: "32px", fontFamily: "'Segoe UI', sans-serif" }}>
         <button onClick={() => setShowPage(null)} style={{ background: "#7B2FBE", color: "#fff", border: "none", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", marginBottom: "24px" }}>← Back</button>
         <h1 style={{ color: "#7B2FBE" }}>{t.about}</h1>
-        <p>WinFreePDF is a free, fast, and secure PDF converter tool supporting all Indian languages.</p>
+        <p>WinFreePDF is a free, fast, and secure online PDF converter tool. We support 15+ conversion tools including PDF to Word, PDF to Excel, PDF to JPG, and many more.</p>
+        <h2>Our Mission</h2>
+        <p>To provide free, high-quality PDF conversion tools accessible to everyone, especially users across India in their native languages.</p>
+        <h2>Features</h2>
+        <p>15+ PDF tools - 100% Free - Fast conversion - Secure file handling - Supports 10 Indian languages - No software installation needed</p>
+        <h2>Contact Us</h2>
         <p>Email: umashri414@gmail.com</p>
+        <p>Website: https://winfreepdf.vercel.app</p>
       </div>
     );
   }
@@ -567,7 +566,6 @@ export default function Home() {
             )}
           </div>
         </header>
- 
         <div style={{ maxWidth: "700px", margin: "48px auto", padding: "0 16px" }}>
           <AdBanner t={t} />
           <div onDrop={handleDrop}
@@ -580,7 +578,6 @@ export default function Home() {
             <p style={{ color: "#888", margin: 0 }}>.{selectedTool.inputFormat}</p>
             <input ref={fileRef} type="file" style={{ display: "none" }} accept={`.${selectedTool.inputFormat}`} onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
           </div>
- 
           {file && (
             <div style={{ marginTop: "24px", background: "#fff", borderRadius: "12px", padding: "20px", border: "1px solid #eee" }}>
               <p style={{ margin: "0 0 16px", color: "#444" }}>📎 {file.name} ({(file.size / 1024).toFixed(1)} KB)</p>
@@ -590,7 +587,6 @@ export default function Home() {
               </button>
             </div>
           )}
- 
           {status && (
             <div style={{ marginTop: "16px", padding: "16px", background: "#fff", borderRadius: "12px", textAlign: "center", fontSize: "16px", border: "1px solid #eee" }}>
               {status}
@@ -598,7 +594,6 @@ export default function Home() {
           )}
           {showAd && <AdBanner t={t} />}
         </div>
- 
         {showLoginPopup && (
           <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
             <div style={{ background: "#fff", borderRadius: "20px", padding: "40px", maxWidth: "400px", textAlign: "center" }}>
@@ -616,7 +611,6 @@ export default function Home() {
             </div>
           </div>
         )}
- 
         {showPremium && (
           <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
             <div style={{ background: "#fff", borderRadius: "20px", padding: "40px", maxWidth: "400px", textAlign: "center" }}>
@@ -687,6 +681,12 @@ export default function Home() {
           ))}
         </div>
       </div>
+ 
+      <HowItWorks t={t} />
+      <AdBanner t={t} />
+      <WhyChooseUs t={t} />
+      <AdBanner t={t} />
+      <FAQ t={t} />
  
       <footer style={{ textAlign: "center", padding: "32px", color: "#aaa", fontSize: "14px", borderTop: "1px solid #eee", marginTop: "40px" }}>
         <p style={{ marginBottom: "12px" }}>💜 {t.footer}</p>
