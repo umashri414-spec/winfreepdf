@@ -7,27 +7,36 @@ export async function POST(req: Request) {
     const formData = await req.formData()
     const file = formData.get('file') as File
     const outputFormat = formData.get('outputFormat') as string
+    const toolId = formData.get('toolId') as string
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
     }
 
-    if (!outputFormat) {
-      return NextResponse.json({ error: 'No output format specified' }, { status: 400 })
+    const cloudConvert = new CloudConvert(process.env.CLOUDCONVERT_API_KEY!)
+
+    // Special convert options per tool
+    const convertOptions: any = {
+      operation: 'convert',
+      input: 'import-file',
+      output_format: outputFormat,
     }
 
-    const cloudConvert = new CloudConvert(process.env.CLOUDCONVERT_API_KEY!)
+    // Protect PDF — password add
+    if (toolId === 'protect-pdf') {
+      convertOptions.user_password = '1234'
+      convertOptions.owner_password = '1234'
+    }
+
+    // Compress PDF
+    if (toolId === 'compress-pdf') {
+      convertOptions.pdf_compression = 'screen'
+    }
 
     const job = await cloudConvert.jobs.create({
       tasks: {
-        'import-file': {
-          operation: 'import/upload'
-        },
-        'convert-file': {
-          operation: 'convert',
-          input: 'import-file',
-          output_format: outputFormat
-        },
+        'import-file': { operation: 'import/upload' },
+        'convert-file': convertOptions,
         'export-file': {
           operation: 'export/url',
           input: 'convert-file'
@@ -39,16 +48,13 @@ export async function POST(req: Request) {
     await cloudConvert.tasks.upload(uploadTask!, file)
 
     const completedJob = await cloudConvert.jobs.wait(job.id)
-
     const exportTask = completedJob.tasks.find(t => t.name === 'export-file')
     const result = exportTask?.result?.files?.[0]
 
-    return NextResponse.json({
-      url: result?.url
-    })
+    return NextResponse.json({ url: result?.url })
 
   } catch (error) {
     console.error('Conversion error:', error)
     return NextResponse.json({ error: 'Conversion failed' }, { status: 500 })
   }
-}    
+}
