@@ -1,3 +1,4 @@
+
 import { NextResponse } from 'next/server'
 import CloudConvert from 'cloudconvert'
 
@@ -5,9 +6,14 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData()
     const file = formData.get('file') as File
+    const outputFormat = formData.get('outputFormat') as string
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
+    }
+
+    if (!outputFormat) {
+      return NextResponse.json({ error: 'No output format specified' }, { status: 400 })
     }
 
     const cloudConvert = new CloudConvert(process.env.CLOUDCONVERT_API_KEY!)
@@ -20,7 +26,7 @@ export async function POST(req: Request) {
         'convert-file': {
           operation: 'convert',
           input: 'import-file',
-          output_format: 'docx'
+          output_format: outputFormat
         },
         'export-file': {
           operation: 'export/url',
@@ -35,7 +41,6 @@ export async function POST(req: Request) {
     const completedJob = await cloudConvert.jobs.wait(job.id)
 
     const exportTask = completedJob.tasks.find(t => t.name === 'export-file')
-    console.log("EXPORT TASK:", exportTask)
     const result = exportTask?.result?.files?.[0]
 
     return NextResponse.json({
@@ -43,6 +48,7 @@ export async function POST(req: Request) {
     })
 
   } catch (error) {
+    console.error('Conversion error:', error)
     return NextResponse.json({ error: 'Conversion failed' }, { status: 500 })
   }
-}
+}    
