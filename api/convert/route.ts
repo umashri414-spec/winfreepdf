@@ -1,8 +1,8 @@
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import CloudConvert from 'cloudconvert'
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData()
     const file = formData.get('file') as File
@@ -21,18 +21,15 @@ export async function POST(req: Request) {
       output_format: outputFormat,
     }
 
-    // Word/Excel/PPT to PDF — LibreOffice engine
     if (['docx', 'xlsx', 'pptx'].includes(file.name.split('.').pop()?.toLowerCase() || '')) {
       convertOptions.engine = 'libreoffice'
     }
 
-    // Protect PDF
     if (toolId === 'protect-pdf') {
       convertOptions.user_password = '1234'
       convertOptions.owner_password = '1234'
     }
 
-    // Compress PDF
     if (toolId === 'compress-pdf') {
       convertOptions.pdf_compression = 'screen'
     }
@@ -46,16 +43,20 @@ export async function POST(req: Request) {
     })
 
     const uploadTask = job.tasks.find(t => t.name === 'import-file')
-    await cloudConvert.tasks.upload(uploadTask!, file)
+    if (!uploadTask) throw new Error('Upload task not found')
+    
+    await cloudConvert.tasks.upload(uploadTask, file as any)
 
     const completedJob = await cloudConvert.jobs.wait(job.id)
     const exportTask = completedJob.tasks.find(t => t.name === 'export-file')
-    const result = exportTask?.result?.files?.[0]
+    const downloadUrl = exportTask?.result?.files?.[0]?.url
 
-    return NextResponse.json({ url: result?.url })
+    if (!downloadUrl) throw new Error('No download URL')
 
-  } catch (error) {
-    console.error('Conversion error:', error)
+    return NextResponse.json({ url: downloadUrl })
+
+  } catch (error: any) {
+    console.error('Conversion error:', error?.message || error)
     return NextResponse.json({ error: 'Conversion failed' }, { status: 500 })
   }
 }
