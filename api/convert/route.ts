@@ -9,20 +9,24 @@ export async function POST(req: Request) {
     const outputFormat = formData.get('outputFormat') as string
     const toolId = formData.get('toolId') as string
 
-    if (!file) {
-      return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
+    if (!file || !outputFormat) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
     const cloudConvert = new CloudConvert(process.env.CLOUDCONVERT_API_KEY!)
 
-    // Special convert options per tool
     const convertOptions: any = {
       operation: 'convert',
       input: 'import-file',
       output_format: outputFormat,
     }
 
-    // Protect PDF — password add
+    // Word/Excel/PPT to PDF — LibreOffice engine
+    if (['docx', 'xlsx', 'pptx'].includes(file.name.split('.').pop()?.toLowerCase() || '')) {
+      convertOptions.engine = 'libreoffice'
+    }
+
+    // Protect PDF
     if (toolId === 'protect-pdf') {
       convertOptions.user_password = '1234'
       convertOptions.owner_password = '1234'
@@ -37,10 +41,7 @@ export async function POST(req: Request) {
       tasks: {
         'import-file': { operation: 'import/upload' },
         'convert-file': convertOptions,
-        'export-file': {
-          operation: 'export/url',
-          input: 'convert-file'
-        }
+        'export-file': { operation: 'export/url', input: 'convert-file' }
       }
     })
 
