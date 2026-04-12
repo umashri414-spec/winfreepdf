@@ -13,9 +13,9 @@ export async function POST(req: NextRequest) {
 
     const backendForm = new FormData()
     backendForm.append('file', file)
-    backendForm.append('output_format', outputFormat)
+    backendForm.append('outputFormat', outputFormat)
 
-    const response = await fetch('https://pdf-backend-dvzt.onrender.com/convert', {
+    const response = await fetch('https://pdf-backend-dvzt.onrender.com/api/convert', {
       method: 'POST',
       body: backendForm,
     })
